@@ -49,3 +49,10 @@ This repository contains two main components:
 1. Clone this repository:
    ```bash
    git clone https://github.com/YahyaAlDallal/riwaa.git
+   ```
+2.	Navigate to the Flutter app folder:
+   ```bash
+   cd riwaa/flutter-app
+   flutter pub get
+   flutter run
+   ```
