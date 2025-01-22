@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:riwaa/core/utilities/appAssets.dart';
-import 'package:riwaa/core/utilities/appStyles.dart';
 
 class LogoBuilder extends StatelessWidget {
   const LogoBuilder({super.key});

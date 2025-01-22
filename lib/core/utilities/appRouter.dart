@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:riwaa/core/utilities/constants.dart';
+import 'package:riwaa/features/home/presentation/views/homeView.dart';
 import 'package:riwaa/features/splash/presentation/views/splashView.dart';
 
 abstract class AppRouter {
@@ -10,6 +11,13 @@ abstract class AppRouter {
       GoRoute(
         path: '/',
         builder: (context, state) => const SplashView(),
+      ),
+      GoRoute(
+        path: home,
+        pageBuilder: (context,state) => pagesTransitionBuilder(
+          duration: const Duration(milliseconds: 500),
+          child: const HomeView(),
+        ),
       ),
     ],
   );
