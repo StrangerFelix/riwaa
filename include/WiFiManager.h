@@ -6,7 +6,7 @@
 
 class WiFiManager {
 public:
-    static void initializeWiFi();
+    static void init();
     static String getMACAddress();
 };
 

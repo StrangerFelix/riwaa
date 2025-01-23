@@ -1,6 +1,6 @@
 #include "WiFiManager.h"
 
-void WiFiManager::initializeWiFi() {
+void WiFiManager::init() {
     WiFi.mode(WIFI_STA); // Set Wi-Fi to Station mode
     delay(100);
     // WiFi.disconnect();   // Ensure no active connections

@@ -18,8 +18,8 @@ void setup() {
   delay(50);
 
   // Initializing
-  display.initializeDisplay();
-  wifiManager.initializeWiFi();
+  display.init();
+  wifiManager.init();
   mySensors.initializeDHT(DHT_PIN);
 
 
@@ -29,7 +29,7 @@ void setup() {
   String MAC = wifiManager.getMACAddress();
   Serial.println("MAC Address: " + MAC);
   Serial.println("hashedMAC: " + hashedMAC);
-  display.drawIcon();
+  display.drawIntro();
 }
 
 void loop() {
