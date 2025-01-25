@@ -8,7 +8,7 @@ void Sensors::initializeDHT(int pin) {
 float Sensors::getTemperature() {
     float temperature = dht->readTemperature();
     if (isnan(temperature)) {
-        return 0.0;
+        return -99.0;
     }
     return temperature;
 }
@@ -16,7 +16,7 @@ float Sensors::getTemperature() {
 float Sensors::getHumidity() {
     float humidity = dht->readHumidity();
     if (isnan(humidity)) {
-        return 0.0;
+        return -99.0;
     }
     return humidity;
 }

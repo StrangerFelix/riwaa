@@ -25,8 +25,8 @@ void Display::drawData(float temperature, float humidity) {
     char tempval[10];
     char humval[10];
 
-    temperature > 99.5 ? sprintf(tempval, "HI") : temperature >= 0 ? temperature < 10 ? sprintf(tempval, " %d",(int) temperature) : sprintf(tempval, "%d", (int)temperature) : sprintf(tempval, "LO");
-    humidity > 99.5 ? sprintf(humval, "HI") : humidity >= 0 ? humidity < 10 ? sprintf(humval, " %d",(int) humidity) : sprintf(humval, "%d", (int)humidity) : sprintf(humval, "LO");
+    temperature > 99.5 ? sprintf(tempval, "HI") : temperature >= 0 ? temperature < 10 ? sprintf(tempval, " %d",(int) temperature) : sprintf(tempval, "%d", (int)temperature) : temperature == -99 ? sprintf(tempval, "ER") :  sprintf(tempval, "LO");
+    humidity > 99.5 ? sprintf(humval, "HI") : humidity >= 0 ? humidity < 10 ? sprintf(humval, " %d",(int) humidity) : sprintf(humval, "%d", (int)humidity) : humidity == -99 ? sprintf(humval, "ER") : sprintf(humval, "LO");
     
     display->clearBuffer();
     display->setFontMode(1);
@@ -66,4 +66,46 @@ void Display::drawData(float temperature, float humidity) {
     display->drawXBMP(33, 14, 7, 5, arrow);
 
     display->sendBuffer();
+}
+
+void Display::drawWiFiState(int state,String apname) {
+    switch (state) {
+        case 0:
+            display->clearBuffer();
+            display->setFont(u8g2_font_6x12_tr);
+            display->drawStr(38, 42, "WiFi ...");
+            display->drawStr(23, 27, "Connecting to");
+            display->sendBuffer();
+            break;
+        case 1:
+            display->clearBuffer();
+            display->setFont(u8g2_font_6x12_tr);
+            display->drawStr(26, 43, "Successfully!");
+
+            display->drawStr(35, 27, "Connected");
+
+            // display->drawXBMP(106, 23, 14, 16, checkicon);
+
+            // display->drawXBMP(7, 23, 14, 16, checkicon);
+            display->sendBuffer();
+            break;
+        case -1:
+            display->clearBuffer();
+            display->setFont(u8g2_font_6x12_tr);
+            display->drawStr(12, 20, "Connection failed!");
+            display->drawStr(12, 34, "restarting");
+            display->drawStr(12, 48, "connection process");
+            display->sendBuffer();
+            break;
+        case 2:
+            display->clearBuffer();
+            display->setFont(u8g2_font_6x12_tr);
+            display->drawStr(9, 14, "Connect to");
+            display->drawStr(9, 27, apname.c_str());
+            display->drawStr(8, 40, "WiFi network and ");
+            display->drawStr(8, 54, "visit 192.168.4.1");
+            display->sendBuffer();
+            break;
+    }
+    
 }
