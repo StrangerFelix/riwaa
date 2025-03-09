@@ -4,7 +4,7 @@ import 'package:riwaa/core/utilities/constants.dart';
 class AppStyles {
   static ThemeData lightTheme = ThemeData(
     brightness: Brightness.light,
-    scaffoldBackgroundColor: kPrimaryColor,
+    scaffoldBackgroundColor: kMainBackgroundColor,
     fontFamily: 'rubik',
     
   );
@@ -31,7 +31,22 @@ class AppStyles {
     height: 1.2
   );
   static const bodySmall = TextStyle(fontSize: 16, fontWeight: FontWeight.w600);
+  static const bodyMedium = TextStyle(fontSize: 18, fontWeight: FontWeight.w600);
   static const paragraphSmall = TextStyle(
     fontSize: 15,
   );
+  static List<Shadow> mainTextShadows = [
+    Shadow(
+      color: Colors.black.withValues(alpha: 0.25),
+      offset: const Offset(0, 2),
+      blurRadius: 10,
+    )
+  ];
+  static List<BoxShadow> mainBoxShadows = [
+    BoxShadow(
+      color: Colors.black.withValues(alpha: .15),
+      blurRadius: 10,
+      offset: const Offset(0, 0),
+    ),
+  ];
 }

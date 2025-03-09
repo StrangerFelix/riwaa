@@ -10,7 +10,7 @@ class ProvisioningView extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text('Hello world')
+            
           ],
         ),
       ),

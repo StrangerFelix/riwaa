@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:riwaa/core/components/svgWithShadow.dart';
 import 'package:riwaa/core/utilities/appAssets.dart';
+import 'package:riwaa/core/utilities/appStyles.dart';
 
 class LogoBuilder extends StatelessWidget {
   const LogoBuilder({super.key});
@@ -10,15 +12,18 @@ class LogoBuilder extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        SvgPicture.asset(
-          AppAssets.logo,
-          width: 35,
+        SvgWithShadow(
+          child: SvgPicture.asset(
+            AppAssets.logo,
+            width: 50,
+          ),
         ),
         const SizedBox(width: 10,),
-        const Text(
+        Text(
           'تطبيق رِواء',
           style: TextStyle(
             fontSize: 30,
+            shadows: AppStyles.mainTextShadows,
             fontWeight: FontWeight.w500
           ),
         )
