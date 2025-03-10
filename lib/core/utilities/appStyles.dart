@@ -35,6 +35,9 @@ class AppStyles {
   static const paragraphSmall = TextStyle(
     fontSize: 15,
   );
+  static const paragraphMedium = TextStyle(
+    fontSize: 16,
+  );
   static List<Shadow> mainTextShadows = [
     Shadow(
       color: Colors.black.withValues(alpha: 0.25),

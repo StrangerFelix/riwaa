@@ -13,7 +13,7 @@ class HomeViewBody extends StatelessWidget {
       child: Column(
         children: [
           SizedBox(
-            height: MediaQuery.of(context).padding.top + 10,
+            height: MediaQuery.paddingOf(context).top + 10,
           ),
           const HomeAppBar(),
           const SizedBox(height: 30,),

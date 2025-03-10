@@ -11,7 +11,7 @@ class WeatherHeader extends StatelessWidget {
     return Row(
       children: [
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: horizontalPadding),
+          padding: const EdgeInsets.symmetric(horizontal: kHorizontalPadding),
           child: GradientText(
             'حالة الطقس', 
             gradient: const LinearGradient(

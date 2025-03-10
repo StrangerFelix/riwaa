@@ -1,13 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:riwaa/features/home/presentation/views/widgets/homeViewBody.dart';
+import 'package:go_router/go_router.dart';
+import 'package:riwaa/core/components/customNavBar.dart';
 
 class HomeView extends StatelessWidget {
-  const HomeView({super.key});
-
+  const HomeView({
+    required this.navigationShell,
+    Key? key}) : super(key: key ?? const ValueKey<String>('HomeView'));
+  final StatefulNavigationShell navigationShell;
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: HomeViewBody(),
+    return Scaffold(
+      body: Column(
+        children: [
+          Expanded(
+            child: navigationShell
+          ),
+          const CustomNavBar()
+        ],
+      ),
     );
   }
 }

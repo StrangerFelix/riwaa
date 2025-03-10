@@ -47,7 +47,7 @@ class _SplashViewState extends State<SplashView> with SingleTickerProviderStateM
                 return SlideTransition(
                   position: animation,
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: horizontalPadding),
+                    padding: const EdgeInsets.symmetric(horizontal: kHorizontalPadding),
                     child: Text(
                       splashQuotes[randomIndex],
                       textAlign: TextAlign.center,

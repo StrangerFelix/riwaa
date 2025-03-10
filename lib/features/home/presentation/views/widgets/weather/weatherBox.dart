@@ -10,7 +10,7 @@ class WeatherBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 20,horizontal: horizontalPadding),
+      padding: const EdgeInsets.symmetric(vertical: 20,horizontal: kHorizontalPadding),
       child: Container(
         decoration: BoxDecoration(
           color: Colors.white,
