@@ -17,7 +17,7 @@ class MyPlantsBox extends StatelessWidget {
       width: double.infinity,
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(26),
+        borderRadius: kContainerBorderRadius,
         boxShadow: AppStyles.mainBoxShadows,
       ),
       child: Stack(
