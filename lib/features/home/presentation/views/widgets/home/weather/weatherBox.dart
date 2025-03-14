@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:riwaa/core/utilities/appStyles.dart';
 import 'package:riwaa/core/utilities/constants.dart';
-import 'package:riwaa/features/home/presentation/views/widgets/weather/weatherList.dart';
-import 'package:riwaa/features/home/presentation/views/widgets/weather/weatherSelection.dart';
+import 'package:riwaa/features/home/presentation/views/widgets/home/weather/weatherList.dart';
+import 'package:riwaa/features/home/presentation/views/widgets/home/weather/weatherSelection.dart';
 
 class WeatherBox extends StatelessWidget {
   const WeatherBox({super.key});

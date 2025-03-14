@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:riwaa/features/home/presentation/views/widgets/homeAppBar.dart';
-import 'package:riwaa/features/home/presentation/views/widgets/myPlants/myPlantsBody.dart';
-import 'package:riwaa/features/home/presentation/views/widgets/weather/weatherBody.dart';
+import 'package:riwaa/features/home/presentation/views/widgets/home/homeAppBar.dart';
+import 'package:riwaa/features/home/presentation/views/widgets/home/myPlants/myPlantsBody.dart';
+import 'package:riwaa/features/home/presentation/views/widgets/home/weather/weatherBody.dart';
 
 class HomeViewBody extends StatelessWidget {
   const HomeViewBody({super.key});

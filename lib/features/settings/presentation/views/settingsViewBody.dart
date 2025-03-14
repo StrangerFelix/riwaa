@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-import 'package:riwaa/features/settings/presentation/views/widgets/allowNotificationsSetting.dart';
-import 'package:riwaa/features/settings/presentation/views/widgets/copyrightText.dart';
-import 'package:riwaa/features/settings/presentation/views/widgets/settingsHeader.dart';
-import 'package:riwaa/features/settings/presentation/views/widgets/tempUnitSetting.dart';
-import 'package:riwaa/features/settings/presentation/views/widgets/userInfoSetting.dart';
+import 'package:riwaa/features/settings/presentation/views/widgets/settings/allowNotificationsSetting.dart';
+import 'package:riwaa/features/settings/presentation/views/widgets/settings/copyrightText.dart';
+import 'package:riwaa/features/settings/presentation/views/widgets/settings/settingsHeader.dart';
+import 'package:riwaa/features/settings/presentation/views/widgets/settings/tempUnitSetting.dart';
+import 'package:riwaa/features/settings/presentation/views/widgets/settings/userInfoSetting.dart';
 
 class SettingsViewBody extends StatelessWidget {
   const SettingsViewBody({super.key});

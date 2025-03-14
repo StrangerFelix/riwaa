@@ -12,6 +12,8 @@ abstract class AppAssets {
   static const user = "assets/icons/user.svg";
   static const notifications = "assets/icons/notifications.svg";
   static const tempunit = "assets/icons/tempunit.svg";
+  static const qrcode = "assets/icons/qrcode.svg";
+  static const warning = "assets/icons/warning.svg";
 
   static String navBarIcon (int index,bool isactive) {
     switch (index) {

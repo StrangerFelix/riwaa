@@ -1,7 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:riwaa/core/utilities/constants.dart';
-import 'package:riwaa/features/home/presentation/views/widgets/myPlants/myPlantsBox.dart';
+import 'package:riwaa/features/home/presentation/views/widgets/home/myPlants/myPlantsBox.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 

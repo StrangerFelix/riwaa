@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:riwaa/features/home/presentation/views/widgets/myPlants/myPlantsCarousel.dart';
-import 'package:riwaa/features/home/presentation/views/widgets/myPlants/myPlantsHeader.dart';
+import 'package:riwaa/features/home/presentation/views/widgets/home/myPlants/myPlantsCarousel.dart';
+import 'package:riwaa/features/home/presentation/views/widgets/home/myPlants/myPlantsHeader.dart';
 
 class MyPlantsBody extends StatelessWidget {
   const MyPlantsBody({super.key});

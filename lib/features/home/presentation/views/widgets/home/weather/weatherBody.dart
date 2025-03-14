@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:riwaa/features/home/presentation/views/widgets/weather/weatherBox.dart';
-import 'package:riwaa/features/home/presentation/views/widgets/weather/weatherHeader.dart';
+import 'package:riwaa/features/home/presentation/views/widgets/home/weather/weatherBox.dart';
+import 'package:riwaa/features/home/presentation/views/widgets/home/weather/weatherHeader.dart';
 
 class WeatherBody extends StatelessWidget {
   const WeatherBody({super.key});

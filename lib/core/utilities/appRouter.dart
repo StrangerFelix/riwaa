@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:riwaa/core/utilities/constants.dart';
+import 'package:riwaa/features/home/presentation/views/addPlantScanView.dart';
+import 'package:riwaa/features/home/presentation/views/addPlantView.dart';
 import 'package:riwaa/features/home/presentation/views/homeView.dart';
-import 'package:riwaa/features/home/presentation/views/widgets/homeViewBody.dart';
+import 'package:riwaa/features/home/presentation/views/plantDetailsView.dart';
+import 'package:riwaa/features/home/presentation/views/widgets/home/homeViewBody.dart';
 import 'package:riwaa/features/logs/presentation/views/logsViewBody.dart';
 import 'package:riwaa/features/notifications/presentation/views/notificationsViewBody.dart';
 import 'package:riwaa/features/scan/presentation/views/ScanView.dart';
+import 'package:riwaa/features/settings/presentation/views/editProfileView.dart';
 import 'package:riwaa/features/settings/presentation/views/settingsViewBody.dart';
 import 'package:riwaa/features/splash/presentation/views/splashView.dart';
 
@@ -15,6 +19,10 @@ abstract class AppRouter {
   static String notifications = '/notifications';
   static String settings = '/settings';
   static String scan = '/scan';
+  static String editProfile = '/editProfile';
+  static String addPlantScan = '/addPlantScan';
+  static String addPlant = '/addPlant';
+  static String plantDetails = '/plantDetails';
   static final _rootNavigationKey = GlobalKey<NavigatorState>(debugLabel: 'root');
   static final router = GoRouter(
     navigatorKey: _rootNavigationKey,
@@ -28,6 +36,46 @@ abstract class AppRouter {
         pageBuilder: (context, state) => CustomTransitionPage(
           key: state.pageKey,
           child: const ScanView(),
+          transitionDuration: kNavigationDuration,
+          transitionsBuilder: (context, animation, secondaryAnimation, child) {
+            return FadeTransition(
+              opacity: animation,
+              child: child,
+            );
+          }
+        ),
+      ),
+      GoRoute(
+        path: editProfile,
+        builder: (context, state) => const EditProfileView(),
+      ),
+      GoRoute(
+        path: addPlant,
+        builder: (context, state) {
+          String hash = state.extra as String;
+          return AddPlantView(hash: hash);
+        } 
+      ),
+      GoRoute(
+        path: addPlantScan,
+        pageBuilder: (context, state) => CustomTransitionPage(
+          key: state.pageKey,
+          transitionDuration: kNavigationDuration,
+          child: const AddPlantScanView(),
+          transitionsBuilder: (context, animation, secondaryAnimation, child) {
+            return FadeTransition(
+              opacity: animation,
+              child: child,
+            );
+          }
+        ),
+      ),
+      GoRoute(
+        path: plantDetails,
+        pageBuilder: (context, state) => CustomTransitionPage(
+          key: state.pageKey,
+          transitionDuration: kNavigationDuration,
+          child: const PlantDetailsView(),
           transitionsBuilder: (context, animation, secondaryAnimation, child) {
             return FadeTransition(
               opacity: animation,

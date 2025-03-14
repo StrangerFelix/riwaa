@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:riwaa/core/utilities/appAssets.dart';
-import 'package:riwaa/features/home/presentation/views/widgets/weather/weatherItem.dart';
+import 'package:riwaa/features/home/presentation/views/widgets/home/weather/weatherItem.dart';
 
 class WeatherList extends StatelessWidget {
   const WeatherList({required this.count,super.key});

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:riwaa/core/components/gradientText.dart';
 import 'package:riwaa/core/components/mainButton.dart';
+import 'package:riwaa/core/utilities/appRouter.dart';
 import 'package:riwaa/core/utilities/appStyles.dart';
 import 'package:riwaa/core/utilities/constants.dart';
 
@@ -27,7 +29,16 @@ class MyPlantsHeader extends StatelessWidget {
             )
           ),
           MainButton(
-            onTap: () {},
+            onTap: () {
+              GoRouter.of(context).push(
+                AppRouter.addPlantScan,
+              );
+              // GoRouter.of(context).push(
+              //   AppRouter.addPlant,
+              //   extra: 'kfdflkdjsklfjdsfl' // يحذف
+              // );
+              
+            },
             child: Row(
               children: [
                 const Icon(Icons.add,size: 16,),

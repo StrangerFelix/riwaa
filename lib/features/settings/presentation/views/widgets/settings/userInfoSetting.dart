@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:riwaa/core/components/mainButton.dart';
 import 'package:riwaa/core/utilities/appAssets.dart';
+import 'package:riwaa/core/utilities/appRouter.dart';
 import 'package:riwaa/core/utilities/appStyles.dart';
 import 'package:riwaa/core/utilities/constants.dart';
 
@@ -47,14 +49,21 @@ class UserInfoSetting extends StatelessWidget {
           ),
           const SizedBox(height: 20),
           MainButton(
-            onTap: (){},
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10),
-              child: Text(
-                'تعديل',
-                style: AppStyles.bodySmall.copyWith(
-                  fontWeight: FontWeight.normal
-                )
+            onTap: () {
+              GoRouter.of(context).push(AppRouter.editProfile);
+            },
+            child: const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 10),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Icon(Icons.edit,size: 16,),
+                  SizedBox(width: 6),
+                  Text(
+                    'تعديل',
+                    style: AppStyles.bodySmall
+                  ),
+                ],
               ),
             ) 
           ),
