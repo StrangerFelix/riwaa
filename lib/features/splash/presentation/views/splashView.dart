@@ -1,4 +1,5 @@
 import 'dart:math';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:riwaa/core/components/logoBuilder.dart';
@@ -72,12 +73,18 @@ class _SplashViewState extends State<SplashView> with SingleTickerProviderStateM
     animation = Tween<Offset>(begin: const Offset(0, 2), end: Offset.zero)
         .animate(animationController);
     animationController.forward();
-  }
-
+  } 
   void splashEnding() {
+    final user = FirebaseAuth.instance.currentUser;
     Future.delayed(const Duration(milliseconds: 1800), () {
-      // ignore: use_build_context_synchronously
-      GoRouter.of(context).pushReplacement(AppRouter.home);
+      if (user != null) {        
+        // ignore: use_build_context_synchronously
+        GoRouter.of(context).pushReplacement(AppRouter.home);
+      } else {
+        // ignore: use_build_context_synchronously
+        GoRouter.of(context).pushReplacement(AppRouter.login);
+        
+      }
     });
   }
 }

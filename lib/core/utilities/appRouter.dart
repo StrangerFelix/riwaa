@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:riwaa/core/utilities/constants.dart';
+import 'package:riwaa/features/auth/presentation/views/loginView.dart';
+import 'package:riwaa/features/auth/presentation/views/registerView.dart';
 import 'package:riwaa/features/home/presentation/views/addPlantScanView.dart';
 import 'package:riwaa/features/home/presentation/views/addPlantView.dart';
 import 'package:riwaa/features/home/presentation/views/homeView.dart';
@@ -15,6 +17,8 @@ import 'package:riwaa/features/splash/presentation/views/splashView.dart';
 
 abstract class AppRouter {
   static String home = '/home';
+  static String login = '/login';
+  static String register = '/register';
   static String logs = '/logs';
   static String notifications = '/notifications';
   static String settings = '/settings';
@@ -44,6 +48,14 @@ abstract class AppRouter {
             );
           }
         ),
+      ),
+      GoRoute(
+        path: login,
+        builder: (context, state) => const LoginView(),
+      ),
+      GoRoute(
+        path: register,
+        builder: (context, state) => const RegisterView(),
       ),
       GoRoute(
         path: editProfile,

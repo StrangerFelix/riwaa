@@ -34,7 +34,9 @@ class MyPlantsBox extends StatelessWidget {
                 Expanded(
                   child: Center(
                     child: Image.asset(
-                      'assets/images/pot.png',
+                      AppAssets.potImage(
+                        'bobjy'
+                      ),
                     ),
                   ),
                 ),

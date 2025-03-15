@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_KEY</key>
+	<string>AIzaSyAc3NEpNHEwAw9yZH8_OCo1naJ2cP-oJLw</string>
+	<key>GCM_SENDER_ID</key>
+	<string>920191534356</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.riwaa</string>
+	<key>PROJECT_ID</key>
+	<string>riwaa-iq</string>
+	<key>STORAGE_BUCKET</key>
+	<string>riwaa-iq.firebasestorage.app</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:920191534356:ios:1f876b76ac361734c16e01</string>
+	<key>DATABASE_URL</key>
+	<string>https://riwaa-iq-default-rtdb.europe-west1.firebasedatabase.app</string>
+</dict>
+</plist>

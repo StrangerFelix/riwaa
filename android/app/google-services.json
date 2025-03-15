@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "920191534356",
+    "firebase_url": "https://riwaa-iq-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "riwaa-iq",
+    "storage_bucket": "riwaa-iq.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:920191534356:android:b9f6191f425ff1c3c16e01",
+        "android_client_info": {
+          "package_name": "com.example.riwaa"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCufrmtX4vihiXt_dxgBYGT6VgZ4-s1LQk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

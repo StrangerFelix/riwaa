@@ -46,6 +46,23 @@ abstract class AppAssets {
     }
     
   }
+  static String potImage (String pot) {
+    switch (pot) {
+      case "albizia":
+        return "assets/images/pots/albizia.png";
+      case "gardenia":
+        return "assets/images/pots/gardenia.png";
+      case "croton":
+        return "assets/images/pots/croton.png";
+      case "ficus":
+        return "assets/images/pots/ficus.png";
+      case "pothos":
+        return "assets/images/pots/pothos.png";
+      default:
+        return "assets/images/pots/pot.png";
+    }
+
+  }
 }
 enum WeatherState {
   sunny,
