@@ -6,11 +6,8 @@ class ScanView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('scan plant'),
-      ),
-      body: const ScanViewBody()
+    return const Scaffold(
+      body: ScanViewBody()
     );
   }
 }

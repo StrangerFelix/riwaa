@@ -78,12 +78,11 @@ class _AddPlantFormState extends State<AddPlantForm> {
                       selectedItem != null ? dropdownNullIndicator = false : dropdownNullIndicator = true;
                     });
                     if (_formKey.currentState!.validate() && !dropdownNullIndicator) {
-                      Map<String,String?> data = {
-                        'name': nameController.text,
-                        'type': selectedItem?.value,
-                        'hash': widget.hash
-                      };
-                      print(data);
+                      // Map<String,String?> data = {
+                      //   'name': nameController.text,
+                      //   'type': selectedItem?.value,
+                      //   'hash': widget.hash
+                      // };
                     }
                   }, 
                   text: 'إضافة النبتة'

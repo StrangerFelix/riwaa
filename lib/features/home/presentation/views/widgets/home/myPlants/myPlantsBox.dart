@@ -40,11 +40,13 @@ class MyPlantsBox extends StatelessWidget {
                     ),
                   ),
                 ),
-                Text(
-                  'البيزيا',
-                  style: AppStyles.titleMedium.copyWith(
-                    color: Colors.black.withValues(alpha: 0.75),
-                    letterSpacing: 0.95
+                Opacity(
+                  opacity: .75,
+                  child: Text(
+                    'بوبجية',
+                    style: AppStyles.titleLarge.copyWith(
+                      color: Colors.black,
+                    ),
                   ),
                 ),
                 const SizedBox(height: 10,),
