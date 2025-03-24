@@ -10,7 +10,6 @@ import 'package:riwaa/features/auth/presentation/manager/authCubit.dart';
 import 'package:riwaa/firebase_options.dart';
 // import 'package:riwaa/core/utilities/firebaseNotifications.dart';
 
-
 void main () async{
   // debugRepaintRainbowEnabled = true;
   WidgetsFlutterBinding.ensureInitialized();
@@ -20,6 +19,7 @@ void main () async{
   setupServiceLocator();
   // FirebaseNotificationService firebaseNotificationService = FirebaseNotificationService();
   // await firebaseNotificationService.initializeFirebase();
+  
   runApp(const RiwaaApp());
 }
 

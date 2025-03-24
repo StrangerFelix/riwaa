@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 class FancyDropdown<T> extends StatefulWidget {
   final List<DropdownItem<T>> items;
+  final bool isNull;
   final DropdownItem<T>? value;
   final String hint;
   final ValueChanged<DropdownItem<T>?> onChanged;
@@ -21,6 +22,7 @@ class FancyDropdown<T> extends StatefulWidget {
 
   const FancyDropdown({
     super.key,
+    this.isNull = false,
     required this.items,
     this.value,
     required this.onChanged,
@@ -305,7 +307,8 @@ class _FancyDropdownState<T> extends State<FancyDropdown<T>> with SingleTickerPr
                   ),
             ],
             border: Border.all(
-              color: _isOpen ? accentColor : Colors.transparent,
+              color: widget.isNull ? Colors.red : _isOpen ? accentColor : Colors.transparent,
+              
               width: 1.5,
             ),
           ),

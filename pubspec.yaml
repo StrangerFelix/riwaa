@@ -37,7 +37,6 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_bloc: ^9.1.0
-  flutter_local_notifications: ^18.0.1
   flutter_localization: ^0.2.2
   flutter_svg: ^2.0.14
   get_it: ^8.0.3

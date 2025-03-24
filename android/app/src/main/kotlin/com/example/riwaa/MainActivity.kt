@@ -1,4 +1,4 @@
-package com.example.riwaa
+package com.felixdev.riwaa
 
 import io.flutter.embedding.android.FlutterActivity
 

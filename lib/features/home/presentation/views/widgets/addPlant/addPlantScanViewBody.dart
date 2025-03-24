@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
-import 'package:riwaa/core/components/scanRect.dart';
 import 'package:riwaa/core/utilities/appAssets.dart';
 import 'package:riwaa/core/utilities/appRouter.dart';
 import 'package:riwaa/core/utilities/appStyles.dart';
@@ -31,7 +30,6 @@ class _AddPlantScanViewBodyState extends State<AddPlantScanViewBody> {
   }
 
   bool isValidHash(String hash) {
-    print(hash);
     return hash.length == 37 && hash.startsWith("riwaa");
   }
 
