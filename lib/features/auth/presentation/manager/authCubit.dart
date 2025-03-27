@@ -22,7 +22,8 @@ class AuthCubit extends Cubit<AuthStates> {
       );
       emit(RegisterSuccess());
     } catch (e) {
-      emit(RegisterFailure(e.toString()));
+      final error = e.toString().replaceFirst("Exception: ", "");
+      emit(RegisterFailure(error));
     }
   }
 
@@ -39,7 +40,8 @@ class AuthCubit extends Cubit<AuthStates> {
       );
       emit(LoginSuccess());
     } catch (e) {
-      emit(LoginFailure(e.toString()));
+      final error = e.toString().replaceFirst("Exception: ", "");
+      emit(LoginFailure(error));
     }
   }
 }

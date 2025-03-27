@@ -18,6 +18,8 @@ Exception getAuthException(FirebaseAuthException e) {
         return Exception('This user has been disabled.');
       case 'too-many-requests':
         return Exception('حدث خطأ, الرجاء اعادة المحاولة');
+      case 'invalid-credential':
+        return Exception('البريد الالكتروني او كلمة السر غير صحيحة');
       default:
         return Exception(e.message ?? 'حدث خطأ, الرجاء اعادة المحاولة');
     }

@@ -112,22 +112,37 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
                   }
                 },
                 builder: (context, state) {
-                  return state is! RegisterLoading ? CustomFormButton(
-                    onTap: () {
-                      if (formKey.currentState!.validate()) {
-                        final authCubit = context.read<AuthCubit>();
-                        // Call the sign up method
-                        authCubit.signUp(
-                          name: nameController.text.trim(),
-                          email: emailController.text.trim(),
-                          password: passwordController.text,
-                        );
-                      }
-                    }, 
-                    text: 'تسجيل'
-                  ) : const Center(
-                    child: CircularProgressIndicator(color: kPrimaryColor,),
-                  );
+                  return Column(
+                    children: [
+                      state is! RegisterLoading ? CustomFormButton(
+                        onTap: () {
+                          if (formKey.currentState!.validate()) {
+                            final authCubit = context.read<AuthCubit>();
+                            // Call the sign up method
+                            authCubit.signUp(
+                              name: nameController.text.trim(),
+                              email: emailController.text.trim(),
+                              password: passwordController.text,
+                            );
+                          }
+                        }, 
+                        text: 'تسجيل'
+                      ) : const Center(
+                        child: CircularProgressIndicator(color: kPrimaryColor,),
+                      ),
+                      state is RegisterFailure ? Center(
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 10),
+                          child: Text(
+                            state.error,
+                            textAlign: TextAlign.center,
+                            style: AppStyles.paragraphMedium.copyWith(color: Colors.red),
+                          ),
+                        ),
+                      ) : const SizedBox()
+
+                    ],
+                  ); 
                 },
               ),
               const SizedBox(
