@@ -32,7 +32,7 @@ class _AddPlantScanViewBodyState extends State<AddPlantScanViewBody> {
   bool isValidHash(String hash) {
     return hash.length == 37 && hash.startsWith("riwaa");
   }
-
+  // riwaa8261debcdc7c973faeb787f1946f5272
   @override
   Widget build(BuildContext context) {
     return Stack(

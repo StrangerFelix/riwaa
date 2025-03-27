@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:riwaa/core/components/customFormButton.dart';
 import 'package:riwaa/core/components/customTextField.dart';
 import 'package:riwaa/core/components/fancyDropdown.dart';
 import 'package:riwaa/core/utilities/appStyles.dart';
 import 'package:riwaa/core/utilities/constants.dart';
 import 'package:riwaa/features/home/data/models/addPlantDroplist.dart';
+import 'package:riwaa/features/home/presentation/manager/addPlant/addPlantCubit.dart';
+import 'package:riwaa/features/home/presentation/manager/addPlant/addPlantStates.dart';
 
 class AddPlantForm extends StatefulWidget {
-  const AddPlantForm({required this.hash,super.key});
+  const AddPlantForm({required this.hash, super.key});
   final String hash;
 
   @override
@@ -18,10 +22,48 @@ class _AddPlantFormState extends State<AddPlantForm> {
   DropdownItem<String>? selectedItem;
   final _formKey = GlobalKey<FormState>();
   bool dropdownNullIndicator = false;
+  bool isPlantExisted = true; // to hide the form until the plant is checked
   TextEditingController nameController = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    return Padding(
+    return BlocConsumer<AddPlantCubit, AddPlantStates>(
+      listener: (context, state) async{
+        if (state is AddPlantFailure) {
+          ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(state.message)));
+        }
+        // if (state is AddPlantSuccess) {
+        //   print(state.message);
+        // }
+        if (state is AddPlantSuccess) {
+          Navigator.pop(context);
+        }
+        if (state is AddPlantCheck) {
+          if (state.isPlantExisted) {
+            await BlocProvider.of<AddPlantCubit>(context).addPlant(
+              name: '', 
+              type: '', 
+              uId: widget.hash, 
+              isPlantExisted: true
+            );
+            if(context.mounted) {
+              GoRouter.of(context).pop();
+            }
+            
+          } else {
+            isPlantExisted = false;
+          }
+          
+        }
+      },
+      builder: (context, state) {
+        if ((isPlantExisted && (state is AddPlantLoading || state is AddPlantCheck))) {
+          return const Center(
+            child: CircularProgressIndicator(
+              color: kPrimaryColor,
+            ),
+          );
+        } else {
+          return Padding(
           padding: const EdgeInsets.symmetric(horizontal: kHorizontalPadding),
           child: Form(
             key: _formKey,
@@ -39,7 +81,9 @@ class _AddPlantFormState extends State<AddPlantForm> {
                     return null;
                   },
                 ),
-                const SizedBox(height: 20,),
+                const SizedBox(
+                  height: 20,
+                ),
                 FancyDropdown<String>(
                   items: items,
                   value: selectedItem,
@@ -55,41 +99,56 @@ class _AddPlantFormState extends State<AddPlantForm> {
                   showSearchBox: true,
                   searchHint: 'بحث...',
                 ),
-                dropdownNullIndicator ? Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const SizedBox(height: 5,),
-                    SizedBox(
-                      width: double.infinity,
-                      child: Text(
-                        'اختار نوع النبتة',
-                        style: AppStyles.paragraphSmall.copyWith(
-                          color: Colors.red,
-                          fontSize: 12
-                        ),
-                      ),
-                    )
-                  ],
-                ) : const SizedBox(),
-                const SizedBox(height: 20,),
-                CustomFormButton(
-                  onTap: () {
-                    setState(() {
-                      selectedItem != null ? dropdownNullIndicator = false : dropdownNullIndicator = true;
-                    });
-                    if (_formKey.currentState!.validate() && !dropdownNullIndicator) {
-                      // Map<String,String?> data = {
-                      //   'name': nameController.text,
-                      //   'type': selectedItem?.value,
-                      //   'hash': widget.hash
-                      // };
-                    }
-                  }, 
-                  text: 'إضافة النبتة'
+                dropdownNullIndicator
+                    ? Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const SizedBox(
+                            height: 5,
+                          ),
+                          SizedBox(
+                            width: double.infinity,
+                            child: Text(
+                              'اختار نوع النبتة',
+                              style: AppStyles.paragraphSmall
+                                  .copyWith(color:  Colors.red, fontSize: 12),
+                            ),
+                          )
+                        ],
+                      )
+                    : const SizedBox(),
+                const SizedBox(
+                  height: 20,
                 ),
+                state is! AddPlantLoading ? CustomFormButton(
+                    onTap: () {
+                      setState(() {
+                        selectedItem != null
+                            ? dropdownNullIndicator = false
+                            : dropdownNullIndicator = true;
+                      });
+                      if (_formKey.currentState!.validate() &&
+                          !dropdownNullIndicator) {
+                        BlocProvider.of<AddPlantCubit>(context).addPlant(
+                          name: nameController.text,
+                          type: selectedItem!.value,
+                          uId: widget.hash,
+                          isPlantExisted: false
+                        );
+                      }
+                    },
+                    text: 'إضافة النبتة'
+                  ) : const Center(
+                    child: CircularProgressIndicator(
+                      color: kPrimaryColor,
+                    ),
+                  ),
               ],
             ),
           ),
         );
+        }
+      },
+    );
   }
 }

@@ -23,13 +23,14 @@ class AuthRepository {
         email: email,
         password: password,
       );
-      
       // Add user data to Firestore
+      // await firebaseService.firestore.collection('users').doc(userCredential.user!.uid).delete();
       await firebaseService.firestore.collection('users').doc(userCredential.user!.uid).set({
         'uId': userCredential.user!.uid,
         'email': email,
         'name': name,
-      });
+        'devices': []
+      },);
     } on FirebaseAuthException catch (e) {
       throw getAuthException(e);
     }

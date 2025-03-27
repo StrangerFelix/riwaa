@@ -1,5 +1,4 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:riwaa/features/auth/data/models/userAuthModel.dart';
 import 'package:riwaa/features/auth/data/repository/authRepo.dart';
 import 'package:riwaa/features/auth/presentation/manager/authStates.dart';
 
@@ -21,23 +20,6 @@ class AuthCubit extends Cubit<AuthStates> {
         name: name,
         password: password,
       );
-      
-      // Then add additional data to Firestore
-      final user = _authRepository.currentUser;
-      if (user != null) {
-        final userModel = UserAuthModel(
-          uId: user.uid,
-          email: email,
-          name: name,
-        );
-        
-        await _authRepository.
-            firebaseService.firestore
-            .collection('users')
-            .doc(user.uid)
-            .set(userModel.toJson());
-      }
-      
       emit(RegisterSuccess());
     } catch (e) {
       emit(RegisterFailure(e.toString()));
