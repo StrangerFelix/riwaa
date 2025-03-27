@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:riwaa/core/utilities/appStyles.dart';
 
 class CopyrightText extends StatelessWidget {
-  const CopyrightText({super.key});
-
+  const CopyrightText({this.isSplash = false,super.key});
+  final bool isSplash;
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.symmetric(vertical: 30, horizontal: 10),
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 10),
       child: Center(
         child: Directionality(
           textDirection: TextDirection.ltr,
@@ -14,7 +15,8 @@ class CopyrightText extends StatelessWidget {
             '© 2024 Riwaa. All rights reserved.',
             textAlign: TextAlign.center,
             style: TextStyle(
-              color: Colors.grey,
+              color: isSplash ? Colors.white : Colors.grey,
+              shadows: isSplash ? AppStyles.mainTextShadows : null,
               fontSize: 16,
             ),
           ),

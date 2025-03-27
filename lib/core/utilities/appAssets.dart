@@ -1,5 +1,6 @@
 abstract class AppAssets {
   static const logo = "assets/icons/logo.svg";
+  static const splashlogo = "assets/icons/splashlogo.svg";
   static const drop = "assets/icons/drop.svg";
   static const temp = "assets/icons/temp.svg";
   static const sun = "assets/icons/sun.svg";

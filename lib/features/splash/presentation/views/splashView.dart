@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:riwaa/core/components/logoBuilder.dart';
 import 'package:riwaa/core/utilities/appRouter.dart';
+import 'package:riwaa/core/utilities/appStyles.dart';
 import 'package:riwaa/core/utilities/constants.dart';
+import 'package:riwaa/core/components/copyrightText.dart';
 import 'package:riwaa/features/splash/data/splashQuotes.dart';
 
 class SplashView extends StatefulWidget {
@@ -34,14 +36,16 @@ class _SplashViewState extends State<SplashView> with SingleTickerProviderStateM
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      
       backgroundColor: kSplashBackgroundColor,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const SizedBox(height: 15,),
+            const Spacer(),
+            const SizedBox(height: 50,),
             const LogoBuilder(),
-            const SizedBox(height: 15,),
+            const SizedBox(height: 10,),
             AnimatedBuilder(
               animation: animation,
               builder: (BuildContext context, Widget? child) {
@@ -52,16 +56,21 @@ class _SplashViewState extends State<SplashView> with SingleTickerProviderStateM
                     child: Text(
                       splashQuotes[randomIndex],
                       textAlign: TextAlign.center,
-                      style: const TextStyle(
-                        height: 1.75,
+                      style:  TextStyle(
+                        // height: 1.75,
                         fontSize: 16,
-                        fontWeight: FontWeight.w300
+                        fontWeight: FontWeight.w600,
+                        color: Colors.white,
+                        shadows: AppStyles.mainTextShadows
                       ),
                     ),
                   )
                 );
               },
-            )
+            ),
+            const Spacer(),
+            const CopyrightText(isSplash: true,),
+            const SizedBox(height: 40,),
           ],
         )
       ),
@@ -76,7 +85,7 @@ class _SplashViewState extends State<SplashView> with SingleTickerProviderStateM
   } 
   void splashEnding() {
     final user = FirebaseAuth.instance.currentUser;
-    Future.delayed(const Duration(milliseconds: 1800), () {
+    Future.delayed(const Duration(milliseconds: 2300), () {
       if (user != null) {        
         // ignore: use_build_context_synchronously
         GoRouter.of(context).pushReplacement(AppRouter.home);

@@ -5,7 +5,7 @@ import 'package:riwaa/features/settings/data/repository/settings/settingsRepo.da
 import 'package:riwaa/features/settings/presentation/manager/settings/settingsCubit.dart';
 
 import 'package:riwaa/features/settings/presentation/views/widgets/settings/allowNotificationsSetting.dart';
-import 'package:riwaa/features/settings/presentation/views/widgets/settings/copyrightText.dart';
+import 'package:riwaa/core/components/copyrightText.dart';
 import 'package:riwaa/features/settings/presentation/views/widgets/settings/settingsHeader.dart';
 import 'package:riwaa/features/settings/presentation/views/widgets/settings/tempUnitSetting.dart';
 import 'package:riwaa/features/settings/presentation/views/widgets/settings/userInfoSetting.dart';

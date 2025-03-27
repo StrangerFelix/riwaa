@@ -9,7 +9,7 @@ class SvgWithShadow extends StatelessWidget {
     return Stack(
       children: <Widget>[
         Transform.translate(
-          offset: const Offset(0, 2),
+          offset: const Offset(0, 1),
           child: ImageFiltered(
             imageFilter: ImageFilter.blur(sigmaY: 2, sigmaX: 2),
             child: Container(
