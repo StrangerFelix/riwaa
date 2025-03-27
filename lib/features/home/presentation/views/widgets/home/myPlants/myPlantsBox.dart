@@ -6,16 +6,20 @@ import 'package:riwaa/core/utilities/appAssets.dart';
 import 'package:riwaa/core/utilities/appRouter.dart';
 import 'package:riwaa/core/utilities/appStyles.dart';
 import 'package:riwaa/core/utilities/constants.dart';
+import 'package:riwaa/features/home/data/models/homeModel.dart';
 import 'package:riwaa/features/home/presentation/views/widgets/home/myPlants/myPlantDetails.dart';
 
 class MyPlantsBox extends StatelessWidget {
-  const MyPlantsBox({super.key});
-
+  const MyPlantsBox({required this.plant,super.key});
+  final Plant plant;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        GoRouter.of(context).push(AppRouter.plantDetails);
+        GoRouter.of(context).push(
+          AppRouter.plantDetails,
+          extra: plant
+        );
       },
       child: Container(
         margin: const EdgeInsets.symmetric(vertical: 10),
@@ -35,7 +39,7 @@ class MyPlantsBox extends StatelessWidget {
                   child: Center(
                     child: Image.asset(
                       AppAssets.potImage(
-                        'bobjy'
+                        plant.type ?? "others"
                       ),
                     ),
                   ),
@@ -43,14 +47,18 @@ class MyPlantsBox extends StatelessWidget {
                 Opacity(
                   opacity: .75,
                   child: Text(
-                    'بوبجية',
+                    plant.name ?? "--",
                     style: AppStyles.titleLarge.copyWith(
                       color: Colors.black,
                     ),
                   ),
                 ),
                 const SizedBox(height: 10,),
-                const MyPlantDetails()
+                MyPlantDetails(
+                  moisture: plant.info?.moisture?.toDouble() ?? -1,
+                  humidity: plant.info?.humidity?.toDouble() ?? -1,
+                  temperature: plant.info?.temperature?.toDouble() ?? -49,
+                )
               ],
             ),
             PositionedDirectional(

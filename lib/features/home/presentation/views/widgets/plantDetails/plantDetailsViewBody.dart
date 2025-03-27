@@ -4,12 +4,13 @@ import 'package:riwaa/core/components/svgWithShadow.dart';
 import 'package:riwaa/core/utilities/appAssets.dart';
 import 'package:riwaa/core/utilities/appStyles.dart';
 import 'package:riwaa/core/utilities/constants.dart';
+import 'package:riwaa/features/home/data/models/homeModel.dart';
 import 'package:riwaa/features/home/presentation/views/widgets/plantDetails/plantDetailItem.dart';
 import 'package:riwaa/features/home/presentation/views/widgets/plantDetails/plantTemperature.dart';
 
 class PlantDetailsViewBody extends StatelessWidget {
-  const PlantDetailsViewBody({super.key});
-  
+  const PlantDetailsViewBody({required this.plant,super.key});
+  final Plant plant;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -17,7 +18,7 @@ class PlantDetailsViewBody extends StatelessWidget {
         Expanded(
           flex: 1,
           child: Image(
-            image: AssetImage(AppAssets.potImage('ficus')),
+            image: AssetImage(AppAssets.potImage(plant.type ?? "others")),
             fit: BoxFit.cover,
           ),
         ),
@@ -37,7 +38,7 @@ class PlantDetailsViewBody extends StatelessWidget {
                         Opacity(
                           opacity: .75,
                           child: Text(
-                            'بوبجية',
+                            plant.name ?? "--",
                             style: AppStyles.titleLarge.copyWith(
                               shadows: AppStyles.mainTextShadows,
                               fontSize: 40.0,
@@ -46,7 +47,7 @@ class PlantDetailsViewBody extends StatelessWidget {
                         ),
                         const SizedBox(height: 5,),
                         Text(
-                          'البيزيا',
+                          plant.type ?? "other",
                           style: AppStyles.bodySmall.copyWith(color: Colors.grey),
                         ),
                         const SizedBox(height: 15,),

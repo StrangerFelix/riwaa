@@ -2,16 +2,13 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:riwaa/core/utilities/appCache.dart';
-// import 'package:riwaa/core/utilities/appCache.dart';
 import 'package:riwaa/core/utilities/appRouter.dart';
 import 'package:riwaa/core/utilities/appStyles.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:riwaa/core/utilities/bloc_observer.dart';
+import 'package:riwaa/core/utilities/providers.dart';
 import 'package:riwaa/core/utilities/serviceLocator.dart';
-import 'package:riwaa/features/auth/data/repository/authRepo.dart';
-import 'package:riwaa/features/auth/presentation/manager/authCubit.dart';
 import 'package:riwaa/firebase_options.dart';
-// import 'package:riwaa/core/utilities/firebaseNotifications.dart';
 
 void main () async{
   // debugRepaintRainbowEnabled = true;
@@ -34,9 +31,7 @@ class RiwaaApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-      providers: [
-        BlocProvider(create: (context) => AuthCubit(getIt.get<AuthRepository>())),
-      ], 
+      providers: providers, 
       child: MaterialApp.router(
         routerConfig: AppRouter.router,
         debugShowCheckedModeBanner: false,

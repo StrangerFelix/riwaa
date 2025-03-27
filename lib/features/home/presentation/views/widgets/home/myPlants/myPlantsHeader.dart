@@ -36,7 +36,7 @@ class MyPlantsHeader extends StatelessWidget {
               // For Simulator Testing
               // GoRouter.of(context).push(
               //   AppRouter.addPlant,
-              //   extra: 'a1045df8d0b0dc512be141e5c0d96c37' // يحذف
+              //   extra: 'i1045df8d0b0dc512be141e5c0d96q37' // يحذف
               // );
               
             },

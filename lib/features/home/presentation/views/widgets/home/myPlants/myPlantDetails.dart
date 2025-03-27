@@ -4,27 +4,29 @@ import 'package:riwaa/core/utilities/appAssets.dart';
 import 'package:riwaa/core/utilities/appStyles.dart';
 
 class MyPlantDetails extends StatelessWidget {
-  const MyPlantDetails({super.key});
-
+  const MyPlantDetails({this.humidity,this.moisture,this.temperature,super.key});
+  final double? moisture;
+  final double? temperature;
+  final double? humidity;
   @override
   Widget build(BuildContext context) {
-    return const Row(
+    return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         MyPlantDetail(
           title: "رطوبة التربة",
-          value: 80,
+          value: moisture != null && moisture! > -1 ? '${moisture?.toInt()}' : '--',
           image: AppAssets.drop,
         ),
         MyPlantDetail(
           title: "درجة الحرارة",
-          value: 20,
+          value: temperature != null && temperature! > -49 ? '${temperature?.toInt()}' : '--',
           image: AppAssets.temp,
           istemp: true,
         ),
         MyPlantDetail(
           title: "رطوبة الجو",
-          value: 55,
+          value: humidity != null && humidity! > -1 ? '${humidity?.toInt()}' : '--',
           image: AppAssets.sun,
         ),
       ],
@@ -35,7 +37,7 @@ class MyPlantDetails extends StatelessWidget {
 class MyPlantDetail extends StatelessWidget {
   const MyPlantDetail({this.istemp = false,required this.image,required this.title,required this.value,super.key});
   final String title;
-  final double value;
+  final String value;
   final String image;
   final bool istemp;
   @override
@@ -49,12 +51,15 @@ class MyPlantDetail extends StatelessWidget {
             children: [
               SvgPicture.asset(image,height: 30,),
               const SizedBox(width: 8,),
-              Text(
-                "${value.toInt()}${istemp ? '°C' : '%'}",
-                style: AppStyles.title18.copyWith(
-                
-                fontWeight: FontWeight.w500,
-                
+              Directionality(
+                textDirection: TextDirection.ltr,
+                child: Text(
+                  "$value${istemp ? '°C' : '%'}",
+                  style: AppStyles.title18.copyWith(
+                  
+                  fontWeight: FontWeight.w500,
+                  
+                  ),
                 ),
               )
             ],

@@ -6,8 +6,8 @@ import 'package:riwaa/core/utilities/appStyles.dart';
 import 'package:riwaa/core/utilities/constants.dart';
 
 class HomeAppBar extends StatelessWidget {
-  const HomeAppBar({super.key});
-
+  const HomeAppBar({this.userName,super.key});
+  final String? userName;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -32,7 +32,7 @@ class HomeAppBar extends StatelessWidget {
           ),
           const SizedBox(width: 10),
           Text(
-            'مرحباً يحيى 🌱',
+            'مرحباً ${userName?.split(' ').first ?? ""} 🌱',
             style: AppStyles.titleLarge.copyWith(
               fontWeight: FontWeight.w600,
               shadows: AppStyles.mainTextShadows

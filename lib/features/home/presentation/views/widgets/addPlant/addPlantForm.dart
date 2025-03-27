@@ -9,6 +9,7 @@ import 'package:riwaa/core/utilities/constants.dart';
 import 'package:riwaa/features/home/data/models/addPlantDroplist.dart';
 import 'package:riwaa/features/home/presentation/manager/addPlant/addPlantCubit.dart';
 import 'package:riwaa/features/home/presentation/manager/addPlant/addPlantStates.dart';
+import 'package:riwaa/features/home/presentation/manager/home/homeCubit.dart';
 
 class AddPlantForm extends StatefulWidget {
   const AddPlantForm({required this.hash, super.key});
@@ -36,6 +37,7 @@ class _AddPlantFormState extends State<AddPlantForm> {
         // }
         if (state is AddPlantSuccess) {
           Navigator.pop(context);
+          BlocProvider.of<HomeCubit>(context).getHomeData();
         }
         if (state is AddPlantCheck) {
           if (state.isPlantExisted) {

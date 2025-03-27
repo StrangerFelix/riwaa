@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:riwaa/core/utilities/constants.dart';
 import 'package:riwaa/features/auth/presentation/views/loginView.dart';
 import 'package:riwaa/features/auth/presentation/views/registerView.dart';
+import 'package:riwaa/features/home/data/models/homeModel.dart';
 import 'package:riwaa/features/home/presentation/views/addPlantScanView.dart';
 import 'package:riwaa/features/home/presentation/views/addPlantView.dart';
 import 'package:riwaa/features/home/presentation/views/homeView.dart';
@@ -84,17 +85,20 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: plantDetails,
-        pageBuilder: (context, state) => CustomTransitionPage(
-          key: state.pageKey,
-          transitionDuration: kNavigationDuration,
-          child: const PlantDetailsView(),
-          transitionsBuilder: (context, animation, secondaryAnimation, child) {
-            return FadeTransition(
-              opacity: animation,
-              child: child,
-            );
-          }
-        ),
+        pageBuilder: (context, state) {
+          Plant plant = state.extra as Plant;
+          return CustomTransitionPage(
+            key: state.pageKey,
+            transitionDuration: kNavigationDuration,
+            child: PlantDetailsView(plant: plant,),
+            transitionsBuilder: (context, animation, secondaryAnimation, child) {
+              return FadeTransition(
+                opacity: animation,
+                child: child,
+              );
+            }
+          );
+        } 
       ),
       StatefulShellRoute.indexedStack(
         pageBuilder: (context, state, navigationShell) {
