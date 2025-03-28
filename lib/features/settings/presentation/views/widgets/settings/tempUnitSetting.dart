@@ -4,6 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:riwaa/core/components/customSwitch.dart';
 import 'package:riwaa/core/components/settingSection.dart';
 import 'package:riwaa/core/utilities/appAssets.dart';
+import 'package:riwaa/core/utilities/appCache.dart';
 import 'package:riwaa/core/utilities/appStyles.dart';
 
 class TempUnitSetting extends StatefulWidget {
@@ -14,6 +15,22 @@ class TempUnitSetting extends StatefulWidget {
 }
 
 class _TempUnitSettingState extends State<TempUnitSetting> {
+  
+  bool? isCelsius;
+  
+  @override
+  void initState() {
+    super.initState();
+    _loadTempUnit();
+  }
+  
+  Future<void> _loadTempUnit() async {
+    final tempUnit = await AppCache.getTempUnit();
+    setState(() {
+      isCelsius = tempUnit == 'c';
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return SettingSection(
@@ -26,14 +43,14 @@ class _TempUnitSettingState extends State<TempUnitSetting> {
             style: AppStyles.paragraphMedium,
           ),
           const Spacer(),
-          CustomToggleSwitch(
+          isCelsius != null ? CustomToggleSwitch(
             optionOne: '°F', 
             optionTwo: '°C', 
-            initialValue: true, 
-            onChanged: (val) {
-              
+            initialValue: isCelsius!,
+            onChanged: (val) async{
+              val == true ? AppCache.setTempUnit('c') : AppCache.setTempUnit('f');
             }
-          )
+          ) : const SizedBox()
         ],
       ),
     );

@@ -29,4 +29,14 @@ class AppCache {
     if (value is double) {return await sharedPreferences?.setDouble(key, value);}
     return null;
   }
+  
+  static getTempUnit () async{
+    if (await getData(key: 'temp_unit') == null) {
+      await saveData(key: 'temp_unit', value: 'c');
+    }
+    return getData(key: 'temp_unit');
+  }
+  static Future setTempUnit (String tempVal) async{
+    await saveData(key: 'temp_unit', value: tempVal);
+  }
 }

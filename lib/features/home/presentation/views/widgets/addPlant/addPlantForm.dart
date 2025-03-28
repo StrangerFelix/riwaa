@@ -30,6 +30,7 @@ class _AddPlantFormState extends State<AddPlantForm> {
     return BlocConsumer<AddPlantCubit, AddPlantStates>(
       listener: (context, state) async{
         if (state is AddPlantFailure) {
+          GoRouter.of(context).pop();
           ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(state.message)));
         }
         // if (state is AddPlantSuccess) {
@@ -47,9 +48,6 @@ class _AddPlantFormState extends State<AddPlantForm> {
               uId: widget.hash, 
               isPlantExisted: true
             );
-            if(context.mounted) {
-              GoRouter.of(context).pop();
-            }
             
           } else {
             isPlantExisted = false;
