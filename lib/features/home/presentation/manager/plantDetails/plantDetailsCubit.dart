@@ -14,6 +14,18 @@ class PlantDetailsCubit extends Cubit<PlantDetailsStates> {
       (plant) => emit(GetPlantDetailsSuccess(plant))
     );
   }
+  void resetCubit () {
+    emit(PlantDetailsInitial());
+  }
   
+  void deletePlant ({required String userId,required String deviceId}) async {
+    emit(DeletePlantLoading());
+    var data = await _plantDetailsRepository.deletePlant(userId: userId, deviceId: deviceId);
+    data.fold(
+      (exception) => emit(DeletePlantFailure(exception.toString())), 
+      (message) => emit(DeletePlantSuccess(message))
+    );
+  }
+
   
 }

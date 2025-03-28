@@ -23,10 +23,11 @@ void myDialog (BuildContext context,{bool useRootNavigator = true,double? height
 }
 
 class MyAlertDialog extends StatelessWidget {
-  const MyAlertDialog({super.key,this.height,required this.titleAlert,required this.bodyAlert,required this.onTap});
+  const MyAlertDialog({super.key,this.height,this.isDisabled = false,required this.titleAlert,required this.bodyAlert,required this.onTap});
   final double? height;
   final String titleAlert;
   final String bodyAlert;
+  final bool isDisabled;
   // String actionOneLabel;
   final void Function()? onTap;
 
@@ -68,7 +69,7 @@ class MyAlertDialog extends StatelessWidget {
                     Expanded(
                       child: MainButton(
                         onTap: onTap,
-                        color: Colors.red,
+                        color: isDisabled ? Colors.grey :Colors.red,
                         child: Center(
                           child: Text(
                             'نعم',

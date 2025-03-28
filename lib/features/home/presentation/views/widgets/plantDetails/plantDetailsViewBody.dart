@@ -31,7 +31,7 @@ class PlantDetailsViewBody extends StatelessWidget {
               ),
             ),
           );
-        } else if (state is GetPlantDetailsLoading) {
+        } else if (state is GetPlantDetailsLoading || state is DeletePlantLoading) {
           return const Center(child: CircularProgressIndicator(color: kPrimaryColor,),);
         } else {
           return Column(
