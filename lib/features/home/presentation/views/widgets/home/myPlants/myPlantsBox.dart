@@ -39,7 +39,7 @@ class MyPlantsBox extends StatelessWidget {
                   child: Center(
                     child: Image.asset(
                       AppAssets.potImage(
-                        plant.type ?? "others"
+                        plant.type ?? "other"
                       ),
                     ),
                   ),

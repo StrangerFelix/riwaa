@@ -50,6 +50,7 @@ class _MyPlantsCarouselState extends State<MyPlantsCarousel> {
               padding: const EdgeInsets.only(top: 10),
               child: AnimatedSmoothIndicator(
                 activeIndex: activeIndex,
+                // count: widget.plants.length + 1,
                 count: widget.plants.length + 1,
                 effect: const ExpandingDotsEffect(
                   dotColor: Colors.grey,

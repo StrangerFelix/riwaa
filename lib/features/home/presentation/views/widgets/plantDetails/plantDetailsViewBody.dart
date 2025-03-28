@@ -4,6 +4,7 @@ import 'package:riwaa/core/components/svgWithShadow.dart';
 import 'package:riwaa/core/utilities/appAssets.dart';
 import 'package:riwaa/core/utilities/appStyles.dart';
 import 'package:riwaa/core/utilities/constants.dart';
+import 'package:riwaa/features/home/data/models/addPlantDroplist.dart';
 import 'package:riwaa/features/home/data/models/homeModel.dart';
 import 'package:riwaa/features/home/presentation/views/widgets/plantDetails/plantDetailItem.dart';
 import 'package:riwaa/features/home/presentation/views/widgets/plantDetails/plantTemperature.dart';
@@ -18,7 +19,7 @@ class PlantDetailsViewBody extends StatelessWidget {
         Expanded(
           flex: 1,
           child: Image(
-            image: AssetImage(AppAssets.potImage(plant.type ?? "others")),
+            image: AssetImage(AppAssets.potImage(plant.type ?? "other")),
             fit: BoxFit.cover,
           ),
         ),
@@ -47,7 +48,7 @@ class PlantDetailsViewBody extends StatelessWidget {
                         ),
                         const SizedBox(height: 5,),
                         Text(
-                          plant.type ?? "other",
+                          plantNaming[plant.type],
                           style: AppStyles.bodySmall.copyWith(color: Colors.grey),
                         ),
                         const SizedBox(height: 15,),
