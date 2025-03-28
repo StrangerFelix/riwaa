@@ -6,6 +6,7 @@ import 'package:riwaa/features/auth/presentation/views/registerView.dart';
 import 'package:riwaa/features/home/data/models/homeModel.dart';
 import 'package:riwaa/features/home/presentation/views/addPlantScanView.dart';
 import 'package:riwaa/features/home/presentation/views/addPlantView.dart';
+import 'package:riwaa/features/home/presentation/views/editPlantDetailsView.dart';
 import 'package:riwaa/features/home/presentation/views/homeView.dart';
 import 'package:riwaa/features/home/presentation/views/plantDetailsView.dart';
 import 'package:riwaa/features/home/presentation/views/widgets/home/homeViewBody.dart';
@@ -28,6 +29,7 @@ abstract class AppRouter {
   static String addPlantScan = '/addPlantScan';
   static String addPlant = '/addPlant';
   static String plantDetails = '/plantDetails';
+  static String editPlantDetails = '/editPlantDetails';
   static final _rootNavigationKey = GlobalKey<NavigatorState>(debugLabel: 'root');
   static final router = GoRouter(
     navigatorKey: _rootNavigationKey,
@@ -61,6 +63,13 @@ abstract class AppRouter {
       GoRoute(
         path: editProfile,
         builder: (context, state) => const EditProfileView(),
+      ),
+      GoRoute(
+        path: editPlantDetails,
+        builder: (context, state) {
+          final extra = state.extra as Plant;
+          return EditPlantDetailsView(plant: extra);
+        } 
       ),
       GoRoute(
         path: addPlant,

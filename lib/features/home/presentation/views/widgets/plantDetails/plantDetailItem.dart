@@ -29,7 +29,7 @@ class PlantDetailItem extends StatelessWidget {
         ),
         const SizedBox(height: 10,),
         FancyProgressBar(
-          progress: percentage,
+          progress: percentage.toDouble(),
         ),
       ],
     );

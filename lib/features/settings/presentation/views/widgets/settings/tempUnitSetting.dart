@@ -46,7 +46,7 @@ class _TempUnitSettingState extends State<TempUnitSetting> {
           isCelsius != null ? CustomToggleSwitch(
             optionOne: '°F', 
             optionTwo: '°C', 
-            initialValue: isCelsius!,
+            initialValue: isCelsius ?? true,
             onChanged: (val) async{
               val == true ? AppCache.setTempUnit('c') : AppCache.setTempUnit('f');
             }

@@ -1,8 +1,9 @@
 import 'package:get_it/get_it.dart';
 import 'package:riwaa/core/utilities/firebaseService.dart';
 import 'package:riwaa/features/auth/data/repository/authRepo.dart';
-import 'package:riwaa/features/home/data/repositories/addPlantRepo/addPlantRepo.dart';
-import 'package:riwaa/features/home/data/repositories/homeRepo/homeRepo.dart';
+import 'package:riwaa/features/home/data/repositories/addPlantRepo.dart';
+import 'package:riwaa/features/home/data/repositories/homeRepo.dart';
+import 'package:riwaa/features/home/data/repositories/plantDetailsRepo.dart';
 import 'package:riwaa/features/settings/data/repository/settings/settingsRepo.dart';
 
 final getIt = GetIt.instance;
@@ -29,6 +30,11 @@ void setupServiceLocator() {
   );
   getIt.registerLazySingleton<HomeRepository>(
     () => HomeRepository(
+      getIt.get<FirebaseService>()
+    )
+  );
+  getIt.registerLazySingleton<PlantDetailsRepository>(
+    () => PlantDetailsRepository(
       getIt.get<FirebaseService>()
     )
   );

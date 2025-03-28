@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:riwaa/core/utilities/serviceLocator.dart';
-import 'package:riwaa/features/home/data/repositories/addPlantRepo/addPlantRepo.dart';
+import 'package:riwaa/features/home/data/repositories/addPlantRepo.dart';
 import 'package:riwaa/features/home/presentation/manager/addPlant/addPlantCubit.dart';
 import 'package:riwaa/features/home/presentation/views/widgets/addPlant/addPlantAppBar.dart';
 import 'package:riwaa/features/home/presentation/views/widgets/addPlant/addPlantError.dart';

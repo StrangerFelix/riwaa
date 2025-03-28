@@ -6,7 +6,7 @@ import 'package:riwaa/core/utilities/constants.dart';
 
 class PlantTemperature extends StatelessWidget {
   const PlantTemperature({this.temperature = 0,super.key});
-  final double temperature;
+  final num temperature;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -41,18 +41,21 @@ class PlantTemperature extends StatelessWidget {
               ),
               borderRadius: kContainerBorderRadius,
             ),
-            child: Text(
-              '${temperature.toInt()}°C', 
-              style: AppStyles.bodySmall.copyWith(
-                color: Colors.white,
-                shadows: [
-                  Shadow(
-                    color: Colors.black.withValues(alpha: 0.35),
-                    offset: const Offset(0, 0),
-                    blurRadius: 5,
-                  ),
-                ]
-              ),  
+            child: Directionality(
+              textDirection: TextDirection.ltr,
+              child: Text(
+                '${temperature.toInt() > -49 ? temperature.toInt() : '--'}°C', 
+                style: AppStyles.bodySmall.copyWith(
+                  color: Colors.white,
+                  shadows: [
+                    Shadow(
+                      color: Colors.black.withValues(alpha: 0.35),
+                      offset: const Offset(0, 0),
+                      blurRadius: 5,
+                    ),
+                  ]
+                ),  
+              ),
             ),
           ),
         ),

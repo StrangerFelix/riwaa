@@ -86,9 +86,9 @@ class Plant {
 }
 
 class Info {
-  int? moisture;
-  int? temperature;
-  int? humidity;
+num? moisture;
+  num? temperature;
+  num? humidity;
 
   Info({this.moisture, this.temperature, this.humidity});
 

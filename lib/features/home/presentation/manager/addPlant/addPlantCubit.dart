@@ -1,5 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:riwaa/features/home/data/repositories/addPlantRepo/addPlantRepo.dart';
+import 'package:riwaa/features/home/data/repositories/addPlantRepo.dart';
 import 'package:riwaa/features/home/presentation/manager/addPlant/addPlantStates.dart';
 
 class AddPlantCubit extends Cubit<AddPlantStates> {

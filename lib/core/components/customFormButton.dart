@@ -3,9 +3,10 @@ import 'package:riwaa/core/utilities/appStyles.dart';
 import 'package:riwaa/core/utilities/constants.dart';
 
 class CustomFormButton extends StatelessWidget {
-  const CustomFormButton({required this.onTap,required this.text,super.key});
+  const CustomFormButton({this.isDisabled = false,required this.onTap,required this.text,super.key});
   final void Function()? onTap;
   final String text;
+  final bool isDisabled;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -14,14 +15,16 @@ class CustomFormButton extends StatelessWidget {
         height: 50,
         width: double.infinity,
         decoration: BoxDecoration(
-          color: kPrimaryColor,
+          color: isDisabled ? Colors.grey : kPrimaryColor,
           boxShadow: AppStyles.mainBoxShadows,
           borderRadius: BorderRadius.circular(12)
         ),
         child: Center(
           child: Text(
             text,
-            style: AppStyles.paragraphMedium,
+            style: AppStyles.paragraphMedium.copyWith(
+              color: isDisabled ? Colors.white : Colors.black
+            ),
           ),
         ),
       ),

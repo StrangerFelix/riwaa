@@ -1,5 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:riwaa/features/home/data/repositories/homeRepo/homeRepo.dart';
+import 'package:riwaa/features/home/data/repositories/homeRepo.dart';
 import 'package:riwaa/features/home/presentation/manager/home/homeStates.dart';
 
 class HomeCubit extends Cubit<HomeStates> {
