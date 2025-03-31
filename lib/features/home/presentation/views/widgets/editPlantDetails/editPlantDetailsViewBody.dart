@@ -10,8 +10,11 @@ class EditPlantDetailsViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        EditPlantDetailsForm(
-          plant: plant,
+        SingleChildScrollView(
+          physics: const AlwaysScrollableScrollPhysics(),
+          child: EditPlantDetailsForm(
+            plant: plant,
+          ),
         ),
         const EditPlantAppBar()
       ],

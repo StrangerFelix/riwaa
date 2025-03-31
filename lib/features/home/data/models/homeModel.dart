@@ -1,19 +1,23 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:riwaa/features/home/data/models/weatherModel.dart';
 
 class HomeModel {
   String? username;
   List? devices;
   List<Plant>? plants;
+  WeatherModel? weather;
 
   HomeModel({ 
     this.username,
     this.devices,
     this.plants,
+    this.weather,
   });
 
-  HomeModel.fromJson(Map<String, dynamic>? userData,List plantsData) {
+  HomeModel.fromJson(Map<String, dynamic>? userData,List plantsData,WeatherModel? weatherdata) {
     username = userData?['name'] ?? "";
     devices = userData?['devices'] ?? [];
+    weather = weatherdata;
     plants = [];
     for (var plant in plantsData) {
       if (plant != null) {

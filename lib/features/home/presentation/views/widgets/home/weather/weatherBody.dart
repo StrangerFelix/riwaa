@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:riwaa/features/home/data/models/weatherModel.dart';
 import 'package:riwaa/features/home/presentation/views/widgets/home/weather/weatherBox.dart';
 import 'package:riwaa/features/home/presentation/views/widgets/home/weather/weatherHeader.dart';
 
 class WeatherBody extends StatelessWidget {
-  const WeatherBody({super.key});
-
+  const WeatherBody({this.weatherModel,super.key});
+  final WeatherModel? weatherModel;
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    return Column(
       children: [
-        WeatherHeader(),
-        WeatherBox()
+        const WeatherHeader(),
+        WeatherBox(weatherModel: weatherModel,)
       ],
     );
   }

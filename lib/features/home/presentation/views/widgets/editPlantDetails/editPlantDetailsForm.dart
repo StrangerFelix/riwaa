@@ -71,131 +71,136 @@ class _EditPlantDetailsFormState extends State<EditPlantDetailsForm> {
   
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: kHorizontalPadding),
-      child: Form(
-        key: _formKey,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            // const CustomTextField(hintText: 'اسم النبتة'),
-            CustomTextField(
-              hint: 'تسمية النبتة',
-              controller: nameController,
-              validator: (val) {
-                if (val!.isEmpty) {
-                  return 'ادخل اسم النبتة';
-                }
-                return null;
-              },
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            FancyDropdown<String>(
-              items: items,
-              value: selectedItem,
-              isNull: dropdownNullIndicator,
-              hint: 'نوع النبتة',
-              onChanged: (item) {
-                setState(() {
-                  if (item?.value == widget.plant.type) {
-                    typeChange = false;
-                  } else {
-                    typeChange = true;
-                  }
-                  selectedItem = item;
-                });
-              },
-              accentColor: kPrimaryColor,
-              backgroundColor: Colors.white,
-              showSearchBox: true,
-              searchHint: 'بحث...',
-            ),
-            dropdownNullIndicator
-                ? Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const SizedBox(
-                        height: 5,
-                      ),
-                      SizedBox(
-                        width: double.infinity,
-                        child: Text(
-                          'اختار نوع النبتة',
-                          style: AppStyles.paragraphSmall
-                              .copyWith(color: Colors.red, fontSize: 12),
-                        ),
-                      )
-                    ],
-                  )
-                : const SizedBox(),
-            const SizedBox(
-              height: 10,
-            ),
-            FancySlider(
-                value: minMoisture ?? 35.0,
-                activeColor: kPrimaryColor,
-                label: 'اقل نسبة رطوبة:',
-                min: 30,
-                max: 50,
-                onChanged: (val) {
-                  setState(() {
-                    minMoistureChange = true;
-                    minMoisture = val;
-                  });
-                }),
-            const SizedBox(
-              height: 10,
-            ),
-            FancySlider(
-                activeColor: kPrimaryColor,
-                value: maxMoisture ?? 75.0,
-                min: 70,
-                max: 85,
-                label: 'اكبر نسبة رطوبة:',
-                onChanged: (val) {
-                  setState(() {
-                    maxMoistureChange = true;
-                    maxMoisture = val;
-                  });
-                }),
-            const SizedBox(
-              height: 20,
-            ),
-            BlocConsumer<EditPlantDetailsCubit, EditPlantDetailsStates>(
-              listener: (context, state) {
-                if (state is EditPlantDetailsSuccess) {
-                  GoRouter.of(context).pop();
-                  BlocProvider.of<PlantDetailsCubit>(context).getPlant(widget.plant.uId!);
-                }
-              },
-              builder: (context, state) {
-                if (state is EditPlantDetailsLoading) {
-                  return const Center(child: CircularProgressIndicator(color: kPrimaryColor,),);
-                } else {
-                  return CustomFormButton(
-                    isDisabled: (!minMoistureChange && !maxMoistureChange && !nameChange && !typeChange),
-                    onTap: () {
-                      setState(() {
-                        selectedItem != null ? dropdownNullIndicator = false : dropdownNullIndicator = true;
-                      });
-                      if (_formKey.currentState!.validate() && !dropdownNullIndicator && (minMoistureChange || maxMoistureChange || nameChange || typeChange) ) {
-                        BlocProvider.of<EditPlantDetailsCubit>(context).editPlant(
-                          name: nameController.text,
-                          type: selectedItem!.value,
-                          minMoisture: minMoisture!,
-                          maxMoisture: maxMoisture!,
-                          uId: widget.plant.uId
-                        );
+    return SizedBox(
+      height: MediaQuery.sizeOf(context).height,
+      child: Center(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: kHorizontalPadding),
+          child: Form(
+            key: _formKey,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                // const CustomTextField(hintText: 'اسم النبتة'),
+                CustomTextField(
+                  hint: 'تسمية النبتة',
+                  controller: nameController,
+                  validator: (val) {
+                    if (val!.isEmpty) {
+                      return 'ادخل اسم النبتة';
+                    }
+                    return null;
+                  },
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                FancyDropdown<String>(
+                  items: items,
+                  value: selectedItem,
+                  isNull: dropdownNullIndicator,
+                  hint: 'نوع النبتة',
+                  onChanged: (item) {
+                    setState(() {
+                      if (item?.value == widget.plant.type) {
+                        typeChange = false;
+                      } else {
+                        typeChange = true;
                       }
-                    },
-                    text: 'تعديل'
-                  );
-                }
-              },
-            )
-          ],
+                      selectedItem = item;
+                    });
+                  },
+                  accentColor: kPrimaryColor,
+                  backgroundColor: Colors.white,
+                  showSearchBox: true,
+                  searchHint: 'بحث...',
+                ),
+                dropdownNullIndicator
+                    ? Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const SizedBox(
+                            height: 5,
+                          ),
+                          SizedBox(
+                            width: double.infinity,
+                            child: Text(
+                              'اختار نوع النبتة',
+                              style: AppStyles.paragraphSmall
+                                  .copyWith(color: Colors.red, fontSize: 12),
+                            ),
+                          )
+                        ],
+                      )
+                    : const SizedBox(),
+                const SizedBox(
+                  height: 10,
+                ),
+                FancySlider(
+                    value: minMoisture ?? 35.0,
+                    activeColor: kPrimaryColor,
+                    label: 'اقل نسبة رطوبة:',
+                    min: 30,
+                    max: 50,
+                    onChanged: (val) {
+                      setState(() {
+                        minMoistureChange = true;
+                        minMoisture = val;
+                      });
+                    }),
+                const SizedBox(
+                  height: 10,
+                ),
+                FancySlider(
+                    activeColor: kPrimaryColor,
+                    value: maxMoisture ?? 75.0,
+                    min: 70,
+                    max: 85,
+                    label: 'اكبر نسبة رطوبة:',
+                    onChanged: (val) {
+                      setState(() {
+                        maxMoistureChange = true;
+                        maxMoisture = val;
+                      });
+                    }),
+                const SizedBox(
+                  height: 20,
+                ),
+                BlocConsumer<EditPlantDetailsCubit, EditPlantDetailsStates>(
+                  listener: (context, state) {
+                    if (state is EditPlantDetailsSuccess) {
+                      GoRouter.of(context).pop();
+                      BlocProvider.of<PlantDetailsCubit>(context).getPlant(widget.plant.uId!);
+                    }
+                  },
+                  builder: (context, state) {
+                    if (state is EditPlantDetailsLoading) {
+                      return const Center(child: CircularProgressIndicator(color: kPrimaryColor,),);
+                    } else {
+                      return CustomFormButton(
+                        isDisabled: (!minMoistureChange && !maxMoistureChange && !nameChange && !typeChange),
+                        onTap: () {
+                          setState(() {
+                            selectedItem != null ? dropdownNullIndicator = false : dropdownNullIndicator = true;
+                          });
+                          if (_formKey.currentState!.validate() && !dropdownNullIndicator && (minMoistureChange || maxMoistureChange || nameChange || typeChange) ) {
+                            BlocProvider.of<EditPlantDetailsCubit>(context).editPlant(
+                              name: nameController.text,
+                              type: selectedItem!.value,
+                              minMoisture: minMoisture!,
+                              maxMoisture: maxMoisture!,
+                              uId: widget.plant.uId
+                            );
+                          }
+                        },
+                        text: 'تعديل'
+                      );
+                    }
+                  },
+                )
+              ],
+            ),
+          ),
         ),
       ),
     );

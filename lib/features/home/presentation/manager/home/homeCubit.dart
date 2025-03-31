@@ -10,7 +10,12 @@ class HomeCubit extends Cubit<HomeStates> {
     emit (HomeLoading());
     var data = await _homeRepository.getHomeData();
     data.fold(
-      (error) => emit(HomeFailure(error.toString())),
+      (error) => emit(
+        HomeFailure(
+          error.toString(),
+          isWeatherException: error.toString() == "Exception: Error getting location: Exception: Location permissions are permanently denied" ? true : false
+        )
+      ),
       (homeModel) => emit(HomeLoaded(homeModel)),
     );
   }

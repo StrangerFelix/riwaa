@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:riwaa/core/utilities/appCache.dart';
 import 'package:riwaa/core/utilities/appStyles.dart';
 import 'package:riwaa/core/utilities/constants.dart';
+import 'package:riwaa/features/home/data/models/weatherModel.dart';
+import 'package:riwaa/features/home/presentation/views/widgets/home/weather/emptyWeatherViewBody.dart';
 import 'package:riwaa/features/home/presentation/views/widgets/home/weather/weatherList.dart';
 import 'package:riwaa/features/home/presentation/views/widgets/home/weather/weatherSelection.dart';
 
 class WeatherBox extends StatelessWidget {
-  const WeatherBox({super.key});
-
+  const WeatherBox({this.weatherModel,super.key});
+  final WeatherModel? weatherModel;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -19,12 +22,19 @@ class WeatherBox extends StatelessWidget {
         ),
         height: 200,
         width: double.infinity,
-        child: const Column(
+        child: Column(
           children: [
-            WeatherSelection(),
+            weatherModel != null ? const WeatherSelection() : const SizedBox(),
             Expanded(
-              child: WeatherList(count: 10,)
-            )
+              child: weatherModel != null 
+                ?  WeatherList(
+                count: weatherModel?.forecast?.forecastday?[0].hour?.length ?? 0,
+                weatherModel: weatherModel,
+                tempUnit: AppCache.getData(key: 'temp_unit'),
+                ) : const EmptyWeatherViewBody(),
+
+            ),
+            const SizedBox(height: 5,)
           ],
         ),
       ),

@@ -6,7 +6,7 @@ class AppStyles {
     brightness: Brightness.light,
     scaffoldBackgroundColor: kMainBackgroundColor,
     fontFamily: 'rubik',
-    
+    colorScheme: ColorScheme.fromSeed(seedColor: kPrimaryColor)
   );
   static ThemeData darkTheme = ThemeData(
     brightness: Brightness.dark,

@@ -32,6 +32,23 @@ abstract class AppAssets {
         return "assets/icons/dash.svg";
     }
   }
+  static WeatherState getWeatherState(String condition, bool isNight) {
+    condition = condition.toLowerCase(); // Normalize text
+
+    if (isNight && condition.contains('clear')) return WeatherState.moon;
+    if (condition.contains('sunny')) return WeatherState.sunny;
+    if (condition.contains('cloudy') || condition.contains('overcast') || 
+        condition.contains('mist') || condition.contains('fog')) {
+          return WeatherState.cloudy;
+    } 
+    if (condition.contains('rain') || condition.contains('drizzle') || 
+        condition.contains('sleet') || condition.contains('snow') || 
+        condition.contains('thunder')) {
+          return WeatherState.rainy;
+        }
+
+    return WeatherState.dash; // Default to cloudy
+  }
 
   static String weatherImage (WeatherState? state) {
     switch (state) {
@@ -64,9 +81,9 @@ abstract class AppAssets {
       default:
         return "assets/images/pots/pot.png";
     }
-
   }
 }
+
 enum WeatherState {
   sunny,
   cloudy,

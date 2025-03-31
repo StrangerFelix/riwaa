@@ -4,6 +4,7 @@ import 'package:riwaa/core/utilities/constants.dart';
 import 'package:riwaa/features/home/presentation/manager/home/homeCubit.dart';
 import 'package:riwaa/features/home/presentation/manager/home/homeStates.dart';
 import 'package:riwaa/features/home/presentation/views/widgets/home/homeAppBar.dart';
+import 'package:riwaa/features/home/presentation/views/widgets/home/homeErrorViewBody.dart';
 import 'package:riwaa/features/home/presentation/views/widgets/home/myPlants/myPlantsBody.dart';
 import 'package:riwaa/features/home/presentation/views/widgets/home/weather/weatherBody.dart';
 
@@ -28,15 +29,15 @@ class HomeViewBody extends StatelessWidget {
                   SizedBox(
                     height: MediaQuery.paddingOf(context).top + 10,
                   ),
-                  HomeAppBar(userName: state.homeModel.username,),
+                  HomeAppBar(userName: state.homeModel.username),
                   const SizedBox(
                     height: 30,
                   ),
-                  MyPlantsBody(plants: state.homeModel.plants,),
+                  MyPlantsBody(plants: state.homeModel.plants),
                   const SizedBox(
                     height: 20,
                   ),
-                  const WeatherBody()
+                  WeatherBody(weatherModel: state.homeModel.weather)
                 ],
               ),
             );
@@ -47,8 +48,8 @@ class HomeViewBody extends StatelessWidget {
               ),
             );
           } else {
-            return Center(
-              child: Text(state is HomeFailure ? state.error : 'حدث خطأ ما'),
+            return HomeErrorViewBody(
+              error: state is HomeFailure ? state.error : 'حدث خطأ ما!',
             );
           }
         },

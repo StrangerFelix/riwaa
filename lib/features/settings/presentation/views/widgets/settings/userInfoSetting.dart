@@ -11,8 +11,9 @@ import 'package:riwaa/features/settings/presentation/manager/settings/settingsCu
 import 'package:riwaa/features/settings/presentation/manager/settings/settingsStates.dart';
 
 class UserInfoSetting extends StatelessWidget {
-  const UserInfoSetting({super.key});
-
+  const UserInfoSetting({this.email,this.name,super.key});
+  final String? name;
+  final String? email;
   @override
   Widget build(BuildContext context) {
     return Align(
@@ -39,9 +40,10 @@ class UserInfoSetting extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 10),
-          const Text('يحيى محمد', style: AppStyles.bodyMedium),
+          Text(name ?? "", style: AppStyles.bodyMedium),
           const SizedBox(height: 5),
-          Text('ifelixridge007@gmail.com',
+          Text(
+            email ?? "",
               style: AppStyles.bodySmall.copyWith(color: Colors.grey)),
           const SizedBox(height: 20),
           Row(

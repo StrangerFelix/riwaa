@@ -24,7 +24,6 @@ class DeletePlantIcon extends StatelessWidget {
                   bodyAlert: 'حذف النبتة سيحذف جميع البيانات المتعلقة بها',
                   isDisabled: userId == null || deviceId == null,
                   onTap: () {
-                    print ('$userId, $deviceId');
                     if (userId != null && deviceId != null) {
                       BlocProvider.of<PlantDetailsCubit>(context).deletePlant(
                         userId: userId!, deviceId: deviceId!

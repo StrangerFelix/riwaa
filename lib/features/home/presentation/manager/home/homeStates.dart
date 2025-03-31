@@ -10,5 +10,6 @@ class HomeLoaded extends HomeStates {
 }
 class HomeFailure extends HomeStates {
   final String error;
-  HomeFailure(this.error);
+  final bool isWeatherException;
+  HomeFailure(this.error,{this.isWeatherException = false});
 }
