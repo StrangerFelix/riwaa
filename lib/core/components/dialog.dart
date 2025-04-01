@@ -9,13 +9,14 @@ void myDialog (BuildContext context,{bool useRootNavigator = true,double? height
     context: context, 
     builder: (context) {
       return Dialog(
-        child: Container(
-          height: height,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20),
-            color: kMainBackgroundColor,
+        child: IntrinsicHeight(
+          child: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              color: kMainBackgroundColor,
+            ),
+            child: child,
           ),
-          child: child,
         ),
       );
     }

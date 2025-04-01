@@ -8,6 +8,7 @@ import 'package:riwaa/core/utilities/appStyles.dart';
 import 'package:riwaa/core/utilities/constants.dart';
 import 'package:riwaa/features/auth/presentation/manager/authCubit.dart';
 import 'package:riwaa/features/auth/presentation/manager/authStates.dart';
+import 'package:riwaa/features/home/presentation/manager/home/homeCubit.dart';
 
 class RegisterViewBody extends StatefulWidget {
   const RegisterViewBody({super.key});
@@ -109,6 +110,7 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
                 listener: (context, state) {
                   if (state is RegisterSuccess) {
                     GoRouter.of(context).pushReplacement(AppRouter.home);
+                    BlocProvider.of<HomeCubit>(context).getHomeData();
                   }
                 },
                 builder: (context, state) {

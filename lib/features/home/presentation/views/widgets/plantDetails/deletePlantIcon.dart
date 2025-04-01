@@ -16,7 +16,7 @@ class DeletePlantIcon extends StatelessWidget {
   Widget build(BuildContext context) {
     return IconButton(
         onPressed: () {
-          myDialog(context, height: 200,
+          myDialog(context,
               child: BlocBuilder<PlantDetailsCubit, PlantDetailsStates>(
             builder: (context, state) {
               return MyAlertDialog(

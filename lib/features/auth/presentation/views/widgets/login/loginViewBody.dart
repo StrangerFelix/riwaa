@@ -8,6 +8,7 @@ import 'package:riwaa/core/utilities/appStyles.dart';
 import 'package:riwaa/core/utilities/constants.dart';
 import 'package:riwaa/features/auth/presentation/manager/authCubit.dart';
 import 'package:riwaa/features/auth/presentation/manager/authStates.dart';
+import 'package:riwaa/features/home/presentation/manager/home/homeCubit.dart';
 
 class LoginViewBody extends StatefulWidget {
   const LoginViewBody({super.key});
@@ -91,6 +92,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                 listener: (context, state) {
                   if (state is LoginSuccess) {
                     GoRouter.of(context).pushReplacement(AppRouter.home);
+                    BlocProvider.of<HomeCubit>(context).getHomeData();
                   }
                 },
                 builder: (context, state) {

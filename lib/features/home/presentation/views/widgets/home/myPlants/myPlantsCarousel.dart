@@ -29,7 +29,7 @@ class _MyPlantsCarouselState extends State<MyPlantsCarousel> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             CarouselSlider(
-              items: widget.plants.reversed.map<Widget>((plant) {
+              items: widget.plants.map<Widget>((plant) { // items: widget.plants.reversed.map<Widget>((plant) {
                 return MyPlantsBox(plant: plant,);
               }).toList() + [
                 const AddPlantBox()

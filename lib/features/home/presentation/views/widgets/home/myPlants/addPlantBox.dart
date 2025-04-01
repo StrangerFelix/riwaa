@@ -27,7 +27,7 @@ class AddPlantBox extends StatelessWidget{
             backgroundColor: kPrimaryColor,
             radius: 35,
             child: Icon(
-              Icons.add,
+              Icons.add_rounded,
               color: Colors.white,
               size: 40,
             ),
