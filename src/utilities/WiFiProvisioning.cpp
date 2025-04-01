@@ -80,6 +80,7 @@ void WiFiProvisioning :: startCaptivePortal(Display display) {
         // wifiManager.setCustomHeadElement(customCSS.c_str());
 
         // Start the AP
+        // يخلي الاي اس بي يفتح راوتر خاص بيه تستعمله حتى تخليه يكنك على راوتر حقيقي
         bool userConnected = wifiManager.autoConnect(espSSID.c_str()); // Captive portal
 
         if (hasStoredCredentials()) {
@@ -91,7 +92,6 @@ void WiFiProvisioning :: startCaptivePortal(Display display) {
         bool userInputProvided = false;
         while (true) {
             wifiManager.process();
-
             // Check if user provided credentials
             if (WiFi.SSID().length() > 0) { // Detect if credentials are entered
                 userInputProvided = true;

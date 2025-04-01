@@ -20,7 +20,7 @@ void setup() {
   
   // Initializing
   display.init();
-  mySensors.initializeDHT(DHT_PIN);
+  mySensors.init();
   display.drawIntro();
   wifiProvisioning.init(display);
 
@@ -37,11 +37,11 @@ void setup() {
 void loop() {
   // Getting data
   float temperature = mySensors.getTemperature();
-  float humidity = mySensors.getHumidity();
+  float moisture = mySensors.getMoisture();
 
-  display.drawData(temperature, humidity);
-    
-  delay(100);
+  display.drawData(temperature, moisture);
+  
+  delay(1000);
   
 }
 

@@ -2,15 +2,16 @@
 #define SENSORS_H
 
 #include "DHT.h"
+#include "Constants.h"
 
 class Sensors {
 private:
     DHT* dht;
 public:
-    void initializeDHT(int pin);
+    void init();
     float getTemperature();
     float getHumidity();
-    float getMoisture(int pin);
+    float getMoisture();
 };
 
 #endif // SENSOR_H
