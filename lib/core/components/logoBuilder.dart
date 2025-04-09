@@ -14,7 +14,7 @@ class LogoBuilder extends StatelessWidget {
         SvgWithShadow(
           child: SvgPicture.asset(
             AppAssets.splashlogo,
-            width: 200,
+            width: 50,
           ),
         ),
       ],

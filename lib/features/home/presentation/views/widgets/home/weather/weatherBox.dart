@@ -30,7 +30,7 @@ class WeatherBox extends StatelessWidget {
                 ?  WeatherList(
                 count: weatherModel?.forecast?.forecastday?[0].hour?.length ?? 0,
                 weatherModel: weatherModel,
-                tempUnit: AppCache.getData(key: 'temp_unit'),
+                tempUnit: AppCache.getData(key: 'temp_unit') ?? 'c',
                 ) : const EmptyWeatherViewBody(),
 
             ),

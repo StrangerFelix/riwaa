@@ -10,6 +10,7 @@ import 'package:riwaa/features/home/presentation/manager/plantDetails/plantDetai
 import 'package:riwaa/features/home/presentation/manager/plantDetails/plantDetailsStates.dart';
 import 'package:riwaa/features/home/presentation/views/widgets/plantDetails/deletePlantIcon.dart';
 import 'package:riwaa/features/home/presentation/views/widgets/plantDetails/plantDetailsViewBody.dart';
+import 'package:riwaa/features/home/presentation/views/widgets/plantDetails/waterPlantButton.dart';
 
 class PlantDetailsView extends StatelessWidget {
   const PlantDetailsView({required this.plant, super.key});
@@ -39,8 +40,16 @@ class PlantDetailsView extends StatelessWidget {
           )
         ],
       ),
-      body: PlantDetailsViewBody(
-        plant: plant,
+      body: Stack(
+        children: [
+          PlantDetailsViewBody(
+            plant: plant,
+          ),
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: WaterPlantButton(deviceId: plant.uId,)
+          )
+        ] 
       ),
     );
   }

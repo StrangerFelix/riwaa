@@ -1,0 +1,2 @@
+/Users/yahyajawad/Desktop/Contents/Flutter/riwaa/android/app/.cxx/Debug/2g4lyb6b/x86/CMakeFiles/edit_cache.dir
+/Users/yahyajawad/Desktop/Contents/Flutter/riwaa/android/app/.cxx/Debug/2g4lyb6b/x86/CMakeFiles/rebuild_cache.dir

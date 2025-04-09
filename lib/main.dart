@@ -10,6 +10,7 @@ import 'package:riwaa/core/utilities/bloc_observer.dart';
 import 'package:riwaa/core/utilities/providers.dart';
 import 'package:riwaa/core/utilities/serviceLocator.dart';
 import 'package:riwaa/firebase_options.dart';
+import 'package:timeago/timeago.dart' as timeago;
 
 void main () async{
   // debugRepaintRainbowEnabled = true;
@@ -21,6 +22,7 @@ void main () async{
     options: DefaultFirebaseOptions.currentPlatform,
   );
   setupServiceLocator();
+  timeago.setLocaleMessages('ar', timeago.ArMessages());
   // FirebaseNotificationService firebaseNotificationService = FirebaseNotificationService();
   // await firebaseNotificationService.initializeFirebase();
   

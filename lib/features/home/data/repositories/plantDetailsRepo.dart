@@ -57,5 +57,15 @@ class PlantDetailsRepository {
       return left(e);
     }
   }
+  Future<Either<Exception,String>> waterPlant({required String deviceId}) async{
+    try {
+      await _firebaseService.firebaseDatabase.ref('/devices/$deviceId').update({
+        'pump_control': 1
+      });
+      return right('تم ارواء النبات بنجاح');
+    } on Exception catch (e) {
+      return left(e);
+    }
+  }
 
 }

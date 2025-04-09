@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:riwaa/core/errors/addPlantExceptions.dart';
 import 'package:riwaa/core/utilities/firebaseService.dart';
 
@@ -46,6 +47,10 @@ class AddPlantRepository {
             'moisture_min': 35,
             'moisture_max': 75,
           }
+        });
+        DatabaseReference dbRef = _firebaseService.firebaseDatabase.ref('/devices/$uId');
+        await dbRef.update({
+          'isAddedToFirestore': true  
         });
       }
       DocumentReference userDocRef = _firebaseService.firestore.collection('users').doc(userId);

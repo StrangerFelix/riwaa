@@ -50,6 +50,7 @@ class Plant {
   String? name;
   Info? info;
   Settings? settings;
+  Timestamp? lastUpdated;
 
   Plant(
       {this.firstOwner,
@@ -58,7 +59,8 @@ class Plant {
       this.uId,
       this.name,
       this.info,
-      this.settings});
+      this.settings,
+      this.lastUpdated});
 
   Plant.fromJson(Map<String, dynamic> json) {
     firstOwner = json['first_owner'];
@@ -66,6 +68,7 @@ class Plant {
     type = json['type'];
     uId = json['uId'];
     name = json['name'];
+    lastUpdated = json['last_updated'];
     info = json['info'] != null ? Info.fromJson(json['info']) : null;
     settings = json['settings'] != null
         ? Settings.fromJson(json['settings'])
@@ -79,6 +82,7 @@ class Plant {
     data['type'] = type;
     data['uId'] = uId;
     data['name'] = name;
+    data['last_updated'] = lastUpdated;
     if (info != null) {
       data['info'] = info!.toJson();
     }

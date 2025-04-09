@@ -2,17 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:riwaa/core/utilities/constants.dart';
 
 class MainButton extends StatelessWidget {
-  const MainButton({required this.child,this.color = kPrimaryColor,required this.onTap,super.key});
+  const MainButton({required this.child,this.borderRadius = 12.0,this.color = kPrimaryColor,required this.onTap,super.key});
   final void Function()? onTap;
   final Widget child;
   final Color color;
+  final double borderRadius;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
       child: Container(
         decoration: BoxDecoration(
-          borderRadius: const BorderRadius.all(Radius.circular(12.0)),
+          borderRadius: BorderRadius.all(Radius.circular(borderRadius)),
           color: color,
           boxShadow: [
             BoxShadow(

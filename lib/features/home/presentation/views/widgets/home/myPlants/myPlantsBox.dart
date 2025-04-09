@@ -67,7 +67,7 @@ class MyPlantsBox extends StatelessWidget {
               child: CircularPercentIndicator(
                 radius: 30.0,
                 lineWidth: 4.0,
-                percent: 0.333333,
+                percent: plant.info?.moisture != null && plant.info?.moisture != -1 ? plant.info!.moisture! / 100 : 0,
                 center: SvgPicture.asset(
                   AppAssets.drop,
                   width: 24,
