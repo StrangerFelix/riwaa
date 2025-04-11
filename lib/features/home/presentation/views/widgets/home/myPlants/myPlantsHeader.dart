@@ -42,12 +42,17 @@ class MyPlantsHeader extends StatelessWidget {
             },
             child: Row(
               children: [
-                const Icon(Icons.add,size: 16,),
+                Icon(
+                  Icons.add,
+                  size: 16,
+                  color: Colors.black.withValues(alpha: .7)
+                ),
                 const SizedBox(width: 6),
                 Text(
                   'إضافة نبتة',
                   style: AppStyles.bodySmall.copyWith(
-                    fontSize: 13
+                    fontSize: 13,
+                    color: Colors.black.withValues(alpha: .7),
                   ),
                 )
               ],

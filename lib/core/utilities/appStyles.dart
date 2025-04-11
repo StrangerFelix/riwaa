@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:riwaa/core/utilities/constants.dart';
 
-class AppStyles {
+class AppStyles { 
   static ThemeData lightTheme = ThemeData(
     brightness: Brightness.light,
     scaffoldBackgroundColor: kMainBackgroundColor,
     fontFamily: 'rubik',
-    colorScheme: ColorScheme.fromSeed(seedColor: kPrimaryColor)
+    colorScheme: ColorScheme.fromSeed(seedColor: kPrimaryColor),
   );
   static ThemeData darkTheme = ThemeData(
     brightness: Brightness.dark,

@@ -5,8 +5,8 @@ import 'package:go_router/go_router.dart';
 import 'package:riwaa/core/components/dialog.dart';
 import 'package:riwaa/core/utilities/appAssets.dart';
 import 'package:riwaa/features/home/presentation/manager/home/homeCubit.dart';
-import 'package:riwaa/features/home/presentation/manager/plantDetails/plantDetailsCubit.dart';
-import 'package:riwaa/features/home/presentation/manager/plantDetails/plantDetailsStates.dart';
+import 'package:riwaa/features/home/presentation/manager/plantDetails/plantDetailsBloc.dart';
+import 'package:riwaa/features/home/presentation/manager/plantDetails/plantDetailsEvents.dart';
 
 class DeletePlantIcon extends StatelessWidget {
   const DeletePlantIcon({this.deviceId, this.userId,super.key});
@@ -17,25 +17,24 @@ class DeletePlantIcon extends StatelessWidget {
     return IconButton(
         onPressed: () {
           myDialog(context,
-              child: BlocBuilder<PlantDetailsCubit, PlantDetailsStates>(
-            builder: (context, state) {
-              return MyAlertDialog(
+              child: MyAlertDialog(
                   titleAlert: 'هل انت متاكد من حذف النبتة؟',
                   bodyAlert: 'حذف النبتة سيحذف جميع البيانات المتعلقة بها',
                   isDisabled: userId == null || deviceId == null,
                   onTap: () {
                     if (userId != null && deviceId != null) {
-                      BlocProvider.of<PlantDetailsCubit>(context).deletePlant(
-                        userId: userId!, deviceId: deviceId!
+                      BlocProvider.of<PlantDetailsBloc>(context).add(
+                        DeletePlantEvent(
+                          userId: userId!,
+                          plantId: deviceId!,
+                        ),
                       );
                       GoRouter.of(context).pop();
                       GoRouter.of(context).pop();
                       BlocProvider.of<HomeCubit>(context).getHomeData();
                     } 
-                  });
+                  }));
             },
-          ));
-        },
         icon: SvgPicture.asset(
           AppAssets.delete,
           width: 25,

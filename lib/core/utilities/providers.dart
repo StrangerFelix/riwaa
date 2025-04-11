@@ -7,9 +7,9 @@ import 'package:riwaa/features/home/data/repositories/plantDetailsRepo.dart';
 import 'package:riwaa/features/home/presentation/manager/home/homeCubit.dart';
 // ignore: depend_on_referenced_packages
 import 'package:nested/nested.dart';
-import 'package:riwaa/features/home/presentation/manager/plantDetails/plantDetailsCubit.dart';
+import 'package:riwaa/features/home/presentation/manager/plantDetails/plantDetailsBloc.dart';
 List<SingleChildWidget> providers = [
   BlocProvider(create: (context) => AuthCubit(getIt.get<AuthRepository>())),
   BlocProvider(create: (context) => HomeCubit(getIt.get<HomeRepository>())..getHomeData()),
-  BlocProvider(create: (context) => PlantDetailsCubit(getIt.get<PlantDetailsRepository>()),)
+  BlocProvider(create: (context) => PlantDetailsBloc(getIt.get<PlantDetailsRepository>()),)
 ];

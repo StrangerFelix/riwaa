@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:riwaa/core/utilities/appCache.dart';
@@ -23,6 +24,17 @@ void main () async{
   );
   setupServiceLocator();
   timeago.setLocaleMessages('ar', timeago.ArMessages());
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
+
+  SystemChrome.setSystemUIOverlayStyle(
+    const SystemUiOverlayStyle(
+      statusBarIconBrightness: Brightness.dark, // For Android
+      statusBarBrightness: Brightness.light,    // For iOS
+    ),
+  );
   // FirebaseNotificationService firebaseNotificationService = FirebaseNotificationService();
   // await firebaseNotificationService.initializeFirebase();
   

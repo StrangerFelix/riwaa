@@ -11,7 +11,8 @@ import 'package:riwaa/features/home/data/models/addPlantDroplist.dart';
 import 'package:riwaa/features/home/data/models/homeModel.dart';
 import 'package:riwaa/features/home/presentation/manager/editPlantDetails/editPlantDetailsCubit.dart';
 import 'package:riwaa/features/home/presentation/manager/editPlantDetails/editPlantDetailsStates.dart';
-import 'package:riwaa/features/home/presentation/manager/plantDetails/plantDetailsCubit.dart';
+import 'package:riwaa/features/home/presentation/manager/plantDetails/plantDetailsBloc.dart';
+import 'package:riwaa/features/home/presentation/manager/plantDetails/plantDetailsEvents.dart';
 
 class EditPlantDetailsForm extends StatefulWidget {
   const EditPlantDetailsForm({required this.plant, super.key});
@@ -170,7 +171,9 @@ class _EditPlantDetailsFormState extends State<EditPlantDetailsForm> {
                   listener: (context, state) {
                     if (state is EditPlantDetailsSuccess) {
                       GoRouter.of(context).pop();
-                      BlocProvider.of<PlantDetailsCubit>(context).getPlant(widget.plant.uId!);
+                      context.read<PlantDetailsBloc>().add(GetPlantDetailsEvent(plantId: widget.plant.uId!, changed: true));
+                      // context.read<PlantDetailsCubit>().getPlant(widget.plant.uId!);
+                      // BlocProvider.of<PlantDetailsCubit>(context).getPlant(widget.plant.uId!);
                     }
                   },
                   builder: (context, state) {

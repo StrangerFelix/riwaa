@@ -18,7 +18,7 @@ class MyPlantsBox extends StatelessWidget {
       onTap: () {
         GoRouter.of(context).push(
           AppRouter.plantDetails,
-          extra: plant
+          extra: plant.uId
         );
       },
       child: Container(

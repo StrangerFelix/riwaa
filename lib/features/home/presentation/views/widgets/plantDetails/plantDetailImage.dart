@@ -6,12 +6,10 @@ class PlantDetailImage extends StatelessWidget {
   final String? potType;
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      flex: 1,
-      child: Image(
-        image: AssetImage(AppAssets.potImage(potType ?? "other")),
-        fit: BoxFit.cover,
-      ),
+    return Image(
+      image: AssetImage(AppAssets.potImage(potType ?? "other")),
+      fit: BoxFit.cover,
+      height: MediaQuery.sizeOf(context).height * .35,
     );
   }
 }

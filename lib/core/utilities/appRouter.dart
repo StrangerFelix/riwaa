@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:riwaa/core/utilities/constants.dart';
 import 'package:riwaa/features/auth/presentation/views/loginView.dart';
 import 'package:riwaa/features/auth/presentation/views/registerView.dart';
 import 'package:riwaa/features/home/data/models/homeModel.dart';
+import 'package:riwaa/features/home/presentation/manager/plantDetails/plantDetailsBloc.dart';
+import 'package:riwaa/features/home/presentation/manager/plantDetails/plantDetailsEvents.dart';
 import 'package:riwaa/features/home/presentation/views/addPlantScanView.dart';
 import 'package:riwaa/features/home/presentation/views/addPlantView.dart';
 import 'package:riwaa/features/home/presentation/views/editPlantDetailsView.dart';
@@ -95,11 +98,18 @@ abstract class AppRouter {
       GoRoute(
         path: plantDetails,
         pageBuilder: (context, state) {
-          Plant plant = state.extra as Plant;
+          String uId = state.extra as String;
+          if (uId.isNotEmpty) {
+            BlocProvider.of<PlantDetailsBloc>(context).add(
+              GetPlantDetailsEvent(
+                plantId: uId,
+              ),
+            );
+          }
           return CustomTransitionPage(
             key: state.pageKey,
             transitionDuration: kNavigationDuration,
-            child: PlantDetailsView(plant: plant,),
+            child: PlantDetailsView(plantId: uId,),
             transitionsBuilder: (context, animation, secondaryAnimation, child) {
               return FadeTransition(
                 opacity: animation,

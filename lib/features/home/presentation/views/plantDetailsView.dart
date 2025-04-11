@@ -4,17 +4,16 @@ import 'package:go_router/go_router.dart';
 import 'package:riwaa/core/utilities/constants.dart';
 import 'package:riwaa/core/utilities/firebaseService.dart';
 import 'package:riwaa/core/utilities/serviceLocator.dart';
-import 'package:riwaa/features/home/data/models/homeModel.dart';
 import 'package:riwaa/features/home/presentation/manager/home/homeCubit.dart';
-import 'package:riwaa/features/home/presentation/manager/plantDetails/plantDetailsCubit.dart';
-import 'package:riwaa/features/home/presentation/manager/plantDetails/plantDetailsStates.dart';
+import 'package:riwaa/features/home/presentation/manager/plantDetails/plantDetailsBloc.dart';
+import 'package:riwaa/features/home/presentation/manager/plantDetails/plantDetailsEvents.dart';
+import 'package:riwaa/features/home/presentation/manager/plantDetails/plantDetailsState.dart';
 import 'package:riwaa/features/home/presentation/views/widgets/plantDetails/deletePlantIcon.dart';
 import 'package:riwaa/features/home/presentation/views/widgets/plantDetails/plantDetailsViewBody.dart';
-import 'package:riwaa/features/home/presentation/views/widgets/plantDetails/waterPlantButton.dart';
 
 class PlantDetailsView extends StatelessWidget {
-  const PlantDetailsView({required this.plant, super.key});
-  final Plant plant;
+  const PlantDetailsView({required this.plantId,super.key});
+  final String plantId;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,35 +21,27 @@ class PlantDetailsView extends StatelessWidget {
         backgroundColor: kMainBackgroundColor,
         elevation: 0.0,
         title: const Text('تفاصيل النبتة'),
-        leading: BlocBuilder<PlantDetailsCubit, PlantDetailsStates>(
-          builder: (context,state) => IconButton(
+        leading: BlocBuilder<PlantDetailsBloc, PlantDetailsState>(
+          builder: (context, state) {
+            return IconButton(
               onPressed: () {
                 GoRouter.of(context).pop();
-                if (state is GetPlantDetailsSuccess) {
-                  BlocProvider.of<PlantDetailsCubit>(context).resetCubit();
+                if (state.changed) {
+                  context.read<PlantDetailsBloc>().add(ResetPlantDetailsEvent());
                   BlocProvider.of<HomeCubit>(context).getHomeData();
                 }
               },
-              icon: const Icon(Icons.close_rounded)),
+              icon: const Icon(Icons.close_rounded));
+          }
         ),
-        actions:  [
+        actions: [
           DeletePlantIcon(
             userId: getIt.get<FirebaseService>().firebaseAuth.currentUser!.uid,
-            deviceId: plant.uId,
+            deviceId: plantId,
           )
         ],
       ),
-      body: Stack(
-        children: [
-          PlantDetailsViewBody(
-            plant: plant,
-          ),
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: WaterPlantButton(deviceId: plant.uId,)
-          )
-        ] 
-      ),
+      body: PlantDetailsViewBody(plantId: plantId),
     );
   }
 }
