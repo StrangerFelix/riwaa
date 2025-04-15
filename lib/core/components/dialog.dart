@@ -11,6 +11,7 @@ void myDialog (BuildContext context,{bool useRootNavigator = true,double? height
       return Dialog(
         child: IntrinsicHeight(
           child: Container(
+            padding: EdgeInsets.zero,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
               color: kMainBackgroundColor,
@@ -36,7 +37,6 @@ class MyAlertDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     return Dialog(
       child: Container(
-        height: height,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
           color: kMainBackgroundColor,

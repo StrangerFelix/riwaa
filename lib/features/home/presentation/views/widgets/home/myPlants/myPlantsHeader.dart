@@ -30,14 +30,14 @@ class MyPlantsHeader extends StatelessWidget {
           ),
           MainButton(
             onTap: () {
-              // GoRouter.of(context).push(
-              //   AppRouter.addPlantScan,
-              // );
-              // For Simulator Testing
               GoRouter.of(context).push(
-                AppRouter.addPlant,
-                extra: '18dc2936d5b5ab59c415b19c0105a915' // يحذف
+                AppRouter.addPlantScan,
               );
+              // For Simulator Testing
+              // GoRouter.of(context).push(
+              //   AppRouter.addPlant,
+              //   extra: '18dc2936d5b5ab59c415b19c0105a915' // يحذف
+              // );
               
             },
             child: Row(

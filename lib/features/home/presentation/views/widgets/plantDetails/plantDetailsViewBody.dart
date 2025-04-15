@@ -14,6 +14,7 @@ import 'package:riwaa/features/home/presentation/manager/plantDetails/plantDetai
 import 'package:riwaa/features/home/presentation/views/widgets/plantDetails/plantDetailImage.dart';
 import 'package:riwaa/features/home/presentation/views/widgets/plantDetails/plantDetailItem.dart';
 import 'package:riwaa/features/home/presentation/views/widgets/plantDetails/plantTemperature.dart';
+import 'package:riwaa/features/home/presentation/views/widgets/plantDetails/waterPlantButton.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
 class PlantDetailsViewBody extends StatelessWidget {
@@ -137,7 +138,7 @@ class PlantDetailsViewBody extends StatelessWidget {
                             temperature: state.plant?.info?.temperature?.toDouble() ?? -49.0,
                           ),
                           const SizedBox(height: 20,),
-                          state.status == PlantDetailsStatus.loaded && state.plant?.lastUpdated != null ? SizedBox(
+                          state.plant?.lastUpdated != null ? SizedBox(
                             width: MediaQuery.sizeOf(context).width,
                             child: Text(
                               'اخر تحديث ${timeago.format(state.plant!.lastUpdated!.toDate(), locale: 'ar')}.',
@@ -147,6 +148,10 @@ class PlantDetailsViewBody extends StatelessWidget {
                               ),
                             ),
                           ) : const SizedBox(),
+                          // const SizedBox(height: 20,),
+                          WaterPlantButton(
+                            deviceId: state.plant?.uId,
+                          ),
                         ],
                       ),
                     )
