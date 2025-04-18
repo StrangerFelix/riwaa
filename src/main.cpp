@@ -5,13 +5,16 @@
 #include <Constants.h>
 #include <Display.h>
 #include <WiFiProvisioning.h>
-
+#include <FirebaseService.h>
 
 // Globals
 Sensors mySensors;
 WiFiProvisioning wifiProvisioning;
 Display display;
+FirebaseService firebase;
 
+unsigned long previousMillis = 0;
+const unsigned long UPLOAD_INTERVAL = 600000; // 10 minutes in milliseconds
 
 void setup() {  
   // Initializing
@@ -23,25 +26,25 @@ void setup() {
   mySensors.init();
   display.drawIntro();
   wifiProvisioning.init(display);
-
-//   hashing MAC Address
-//   String hashedMAC = UniqueID::generateHashedMAC(wifiManager.getMACAddress());
-//   String MAC = wifiManager.getMACAddress();
-//   Serial.println("MAC Address: " + MAC);
-//   Serial.println("hashedMAC: " + hashedMAC);
+  
+  String hashedMAC = UniqueID::generateHashedMAC(wifiProvisioning.getMACAddress());
+  firebase.init(hashedMAC,display);
   delay(2000);
   
 }
 
 
 void loop() {
+  unsigned long currentMillis = millis();
   // Getting data
   float temperature = mySensors.getTemperature();
   float moisture = mySensors.getMoisture();
+  float humidity = mySensors.getHumidity();
 
+  firebase.loop(temperature, humidity, moisture,display);
   display.drawData(temperature, moisture);
   
-  delay(1000);
+  delay(100);
   
 }
 

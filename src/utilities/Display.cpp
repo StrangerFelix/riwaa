@@ -25,8 +25,8 @@ void Display::drawData(float temperature, float moisture) {
     char tempval[10];
     char moival[10];
 
-    temperature > 99.5 ? sprintf(tempval, "HI") : temperature >= 0 ? temperature < 10 ? sprintf(tempval, " %d",(int) temperature) : sprintf(tempval, "%d", (int)temperature) : temperature == -99 ? sprintf(tempval, "ER") :  sprintf(tempval, "LO");
-    moisture > 99.5 ? sprintf(moival, "HI") : moisture >= 0 ? moisture < 10 ? sprintf(moival, " %d",(int) moisture) : sprintf(moival, "%d", (int)moisture) : moisture == -1 ? sprintf(moival, "ER") : sprintf(moival, "LO");
+    temperature > 99.5 ? sprintf(tempval, "HI") : temperature >= 0 ? temperature < 10 ? sprintf(tempval, " %d",(int) temperature) : sprintf(tempval, "%d", (int)temperature) : temperature <= -49 ? sprintf(tempval, "ER") :  sprintf(tempval, "LO");
+    moisture > 99.5 ? sprintf(moival, "HI") : moisture >= 0 ? moisture < 10 ? sprintf(moival, " %d",(int) moisture) : sprintf(moival, "%d", (int)moisture) : moisture <= -1 ? sprintf(moival, "ER") : sprintf(moival, "LO");
     
     display->clearBuffer();
     display->setFontMode(1);
@@ -108,4 +108,36 @@ void Display::drawWiFiState(int state,String apname) {
             break;
     }
     
+}
+
+void Display::drawFirebaseState(int state) {
+    switch (state) {
+        case 0:
+            display->clearBuffer();
+            display->setFont(u8g2_font_6x12_tr);
+            display->drawStr(25, 27, "Initializing");
+            display->drawStr(25, 43, "services...");
+            display->sendBuffer();
+            break;
+        case 1:
+            display->clearBuffer();
+            display->setFont(u8g2_font_6x12_tr);
+            display->drawStr(26, 27, "Services are");
+            display->drawStr(29, 43, "now active!");
+            display->sendBuffer();
+            break;
+        case 2:
+            display->clearBuffer();
+            display->setFont(u8g2_font_6x12_tr);
+            display->drawStr(19, 32, "Sending data...");
+            display->sendBuffer();
+            break;
+        case -1:
+            display->clearBuffer();
+            display->setFont(u8g2_font_6x12_tr);
+            display->drawStr(32, 27, "Connection");
+            display->drawStr(40, 43, "failed!");
+            display->sendBuffer();
+            break;
+    }
 }

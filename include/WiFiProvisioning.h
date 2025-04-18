@@ -21,6 +21,7 @@ class WiFiProvisioning {
         void resetWiFiManager();
         void saveCredentials(String ssid, String password);
         String getAPName();
+        String getMACAddress();
 };
 
 #endif

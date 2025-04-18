@@ -13,6 +13,7 @@ class Display {
         void drawIntro();
         void drawData(float temperature, float humidity);
         void drawWiFiState(int state,String apname);
+        void drawFirebaseState(int state);
 };
 
 #endif

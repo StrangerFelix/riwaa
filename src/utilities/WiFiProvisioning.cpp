@@ -109,6 +109,7 @@ void WiFiProvisioning :: startCaptivePortal(Display display) {
             delay(1000); // Small delay for stability
             if (connectToWiFi()) {
                 display.drawWiFiState(1, espSSID);
+                delay(1000);
                 Serial.println("Connected to WiFi successfully!");
                 saveCredentials(WiFi.SSID(), WiFi.psk()); // Save the credentials
                 return;                                   // Exit the loop and function
@@ -149,4 +150,7 @@ String WiFiProvisioning :: getAPName() {
     String mac = WiFi.macAddress();
     String hashedMAC = UniqueID::generateHashedMAC(mac);
     return "Riwaa-" + hashedMAC.substring(0, 6);
+}
+String WiFiProvisioning :: getMACAddress() {
+    return WiFi.macAddress();
 }

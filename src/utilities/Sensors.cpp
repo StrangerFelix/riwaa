@@ -13,7 +13,7 @@ void Sensors::init() {
 float Sensors::getTemperature() {
     float temperature = dht->readTemperature();
     if (isnan(temperature)) {
-        return -99.0;
+        return -49.0;
     }
     return temperature;
 }
@@ -21,7 +21,7 @@ float Sensors::getTemperature() {
 float Sensors::getHumidity() {
     float humidity = dht->readHumidity();
     if (isnan(humidity)) {
-        return -99.0;
+        return -1.0;
     }
     return humidity;
 }
@@ -36,7 +36,7 @@ float Sensors::getMoisture() {
     }
     
     float averageReading = sum / (numReadings * 1.0);
-    
+    // Serial.printf("AVG: %f\n",averageReading);
     float moisturePercentage = map(averageReading, AIR_VALUE, WATER_VALUE, 0, 100);
     
     moisturePercentage = constrain(moisturePercentage, 0, 100);
